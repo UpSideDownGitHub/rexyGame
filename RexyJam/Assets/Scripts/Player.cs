@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
 
 
     // INPUT
-    [SerializeField]private float _lookVec;
+    [SerializeField] private float _lookVec;
     [SerializeField] private float _aimVec;
     [SerializeField] private bool _thrust;
     [SerializeField] private bool _fire;
@@ -36,13 +37,31 @@ public class Player : MonoBehaviour
     public void Update()
     {
         rb.angularVelocity = 0;
-        player.transform.Rotate(new Vector3(0,0, -rotationSpeed * _lookVec));
-        gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * _aimVec));
+
+        if (_lookVec != 0)
+        {
+            var val = _lookVec;
+            if (_lookVec < 0)
+                val = -(1 - Mathf.Abs(_lookVec));
+            else
+                val = 1 - val;
+            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * val));
+        }
+
+        if (_aimVec != 0)
+        {
+            var val = _aimVec;
+            if (_aimVec < 0)
+                val = -(1 - Mathf.Abs(_aimVec));
+            else
+                val = 1 - val;
+            gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * val));
+        }
 
         if (_thrust)
-        {
-            rb.AddForce(player.transform.up * thrustForce); 
-        }
+            rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
+        else
+            rb.velocity = Vector2.zero;
 
         if (_fire)
         {
