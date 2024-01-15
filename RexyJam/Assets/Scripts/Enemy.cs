@@ -27,6 +27,9 @@ public class Enemy : MonoBehaviour
     //[Header("Rotation")]
     public float angleOffset;
 
+    [Header("Health")]
+    public float health;
+
     [Header("Projectiles")]
     public GameObject firePoint;
     public GameObject bullet;
@@ -66,6 +69,16 @@ public class Enemy : MonoBehaviour
         if (type == EnemyType.RUSHER)
         {
             Rotate(transform.position);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health = health - damage <= 0 ? 0 : health - damage;
+        
+        if (health == 0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -126,7 +139,7 @@ public class Enemy : MonoBehaviour
                 _timeOfNextAttack = Time.time + attackTime;
                 // fire projectile at player
                 var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.up * fireForce);
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
             }
         }
     }

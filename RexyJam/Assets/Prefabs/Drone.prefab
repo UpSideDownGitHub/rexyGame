@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2386841380601048856}
   m_Layer: 0
   m_Name: Drone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,18 +102,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   agent: {fileID: 2186176208072594299}
+  rb: {fileID: 0}
   type: 0
+  angleOffset: 0
+  health: 100
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 1138109646950533058, guid: 350fce1e2b32ff74e9f6164f30b556ed, type: 3}
-  fireForce: 100
+  fireForce: 500
+  attackTime: 0
   stoppingDistance: 0
   minAttackDistance: 0
   maxAttackDistance: 0
-  attackTime: 0
   distanceToRetreat: 0
   retreatSpeed: 0
   meleeDistance: 0
   meleeTime: 0
+  movmentSpeed: 0
+  turnSpeed: 0
 --- !u!195 &2186176208072594299
 NavMeshAgent:
   m_ObjectHideFlags: 0
