@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class Player : MonoBehaviour
     [Header("Shooting")]
     public GameObject bullet;
     public float fireForce;
-
 
     // INPUT
     [SerializeField] private float _lookVec;
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         if (_thrust)
             rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
         else
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
 
         if (_fire)
         {
