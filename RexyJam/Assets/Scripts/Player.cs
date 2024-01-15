@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
     public Image healthImage;
 
     // INPUT
-    [SerializeField] private float _lookVec;
-    [SerializeField] private float _aimVec;
-    [SerializeField] private bool _thrust;
-    [SerializeField] private bool _fire;
+    private float _lookVec;
+    private float _aimVec;
+    private bool _thrust;
+    private bool _fire;
 
     public void OnLeftStick(InputAction.CallbackContext ctx) => _lookVec = ctx.ReadValue<float>();
     public void OnRightStick(InputAction.CallbackContext ctx) => _aimVec = ctx.ReadValue<float>();

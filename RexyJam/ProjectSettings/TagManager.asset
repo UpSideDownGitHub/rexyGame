@@ -10,6 +10,7 @@ TagManager:
   - Controls
   - Leaderboards
   - Enemy
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
