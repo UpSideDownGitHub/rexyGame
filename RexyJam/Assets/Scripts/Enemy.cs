@@ -5,6 +5,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public enum EnemyType
@@ -12,7 +13,8 @@ public enum EnemyType
     DRONE,
     SNIPER,
     RUSHER,
-    KAMA
+    KAMA,
+    CIRCLE
 }
 
 public class Enemy : MonoBehaviour
@@ -51,11 +53,20 @@ public class Enemy : MonoBehaviour
     [Header("Rusher")]
     public float movmentSpeed;
     public float turnSpeed;
-    
+
+    [Header("Circle")]
+    public float rotationSpeed = 90f;
+    public float lerpSpeed;
+    public Vector3 offset;
+    private Transform pivot;
+    private Vector3 offsetDirection;
+    private float distance;
+
+
 
     public void Awake()
     {
-        if (type != EnemyType.RUSHER && type != EnemyType.KAMA)
+        if (type != EnemyType.RUSHER && type != EnemyType.KAMA && type != EnemyType.CIRCLE)
         {
             agent.updateUpAxis = false;
             agent.updateRotation = false;
@@ -69,6 +80,12 @@ public class Enemy : MonoBehaviour
         if (type == EnemyType.RUSHER)
         {
             Rotate(transform.position);
+        }
+        else if (type == EnemyType.CIRCLE)
+        {
+            pivot = target.transform;
+            offsetDirection = transform.position - pivot.position;
+            distance = offset.magnitude;
         }
     }
 
@@ -97,6 +114,9 @@ public class Enemy : MonoBehaviour
                 break;
             case EnemyType.KAMA:
                 Kama();
+                break;
+            case EnemyType.CIRCLE:
+                Circle();
                 break;
         }
         
@@ -168,6 +188,24 @@ public class Enemy : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.Euler(0f, 0f, angle);
             var tempBullet = Instantiate(bullet, firePoint.transform.position, q);
+            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+        }
+    }
+
+    public void Circle()
+    {
+        Rotate(transform.position);
+
+        Quaternion rotate = Quaternion.Euler(0, 0, rotationSpeed * Time.deltaTime);
+        offsetDirection = (rotate * offsetDirection).normalized;
+        var pos = Vector3.Lerp(transform.position, pivot.position + offsetDirection * distance, lerpSpeed * Time.deltaTime);
+        transform.position = pos;
+
+        if (Time.time > _timeOfNextAttack)
+        {
+            _timeOfNextAttack = Time.time + attackTime;
+            // fire projectile at player
+            var tempBullet = Instantiate(bullet, firePoint.transform.position, transform.rotation);
             tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
         }
     }
