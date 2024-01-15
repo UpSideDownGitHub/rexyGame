@@ -62,6 +62,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3b5bb88-b54e-48f4-8fb7-e6a7d57b5dd1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,6 +194,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9318f1d8-1419-4577-be7c-14f0c0ddc757"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +217,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_RightStick = m_Gameplay.FindAction("Right Stick", throwIfNotFound: true);
         m_Gameplay_Thrust = m_Gameplay.FindAction("Thrust", throwIfNotFound: true);
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
+        m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +283,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_RightStick;
     private readonly InputAction m_Gameplay_Thrust;
     private readonly InputAction m_Gameplay_Fire;
+    private readonly InputAction m_Gameplay_Select;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -270,6 +292,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @RightStick => m_Wrapper.m_Gameplay_RightStick;
         public InputAction @Thrust => m_Wrapper.m_Gameplay_Thrust;
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
+        public InputAction @Select => m_Wrapper.m_Gameplay_Select;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -291,6 +314,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -307,6 +333,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -330,5 +359,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnRightStick(InputAction.CallbackContext context);
         void OnThrust(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
