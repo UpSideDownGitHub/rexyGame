@@ -31,7 +31,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""LeftStick"",
                     ""type"": ""Value"",
                     ""id"": ""4dba77ca-a4a3-4929-b30a-4c271f21fe32"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -40,7 +40,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Right Stick"",
                     ""type"": ""Value"",
                     ""id"": ""6950e122-5cb6-4aed-a2ba-29f3f11bd52b"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -68,7 +68,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4c43f236-b102-417f-b3c4-e4545487e61a"",
-                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/stick"",
+                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/stick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -79,7 +79,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""684e33e7-5c74-4f96-ab8a-585bf8135512"",
-                    ""path"": ""<Joystick>/stick"",
+                    ""path"": ""<Joystick>/stick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""193ae6cd-6fe6-44c7-9e64-648b51abcc44"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -90,7 +101,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6ee67573-bd89-478b-bdd1-b16d31028de0"",
-                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/stick"",
+                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/stick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -101,7 +112,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""59aa944c-b100-481a-bb7f-6da194ffffd5"",
-                    ""path"": ""<Joystick>/stick"",
+                    ""path"": ""<Joystick>/stick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91f63190-712e-474a-a82b-520b5f60e7e7"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
