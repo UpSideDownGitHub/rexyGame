@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         healthImage.fillAmount = curHealth / maxHealth;
         if (curHealth == 0)
         {
-            // end the game
+            PlayerPrefs.SetInt("Score", score);
         }
     }
 
