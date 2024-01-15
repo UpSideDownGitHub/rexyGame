@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
@@ -22,6 +23,13 @@ public class Player : MonoBehaviour
     [Header("Shooting")]
     public GameObject bullet;
     public float fireForce;
+    public float fireRate;
+    private float _timeOfNextFire;
+
+    [Header("Health")]
+    public float maxHealth;
+    public float curHealth;
+    public Image healthImage;
 
     // INPUT
     [SerializeField] private float _lookVec;
@@ -32,7 +40,28 @@ public class Player : MonoBehaviour
     public void OnLeftStick(InputAction.CallbackContext ctx) => _lookVec = ctx.ReadValue<float>();
     public void OnRightStick(InputAction.CallbackContext ctx) => _aimVec = ctx.ReadValue<float>();
     public void OnThrust(InputAction.CallbackContext ctx) => _thrust = ctx.action.WasPressedThisFrame();
-    public void OnFire(InputAction.CallbackContext ctx) => _fire = ctx.action.WasPressedThisFrame();
+    public void OnFire(InputAction.CallbackContext ctx)
+    {
+        if (ctx.action.WasPressedThisFrame())
+            _fire = true;
+        else if (ctx.action.WasReleasedThisFrame())
+            _fire = false;
+    }
+
+    public void Start()
+    {
+        curHealth = maxHealth;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
+        healthImage.fillAmount = curHealth / maxHealth;
+        if (curHealth == 0)
+        {
+            // end the game
+        }
+    }
 
     public void Update()
     {
@@ -63,9 +92,9 @@ public class Player : MonoBehaviour
         else
             //rb.velocity = Vector2.zero;
 
-        if (_fire)
+        if (_fire && Time.time > _timeOfNextFire)
         {
-            _fire = false;
+            _timeOfNextFire = Time.time + fireRate;
             var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.up * fireForce);
         }
