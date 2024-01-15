@@ -32,6 +32,8 @@ public class LeaderboardManagement : MonoBehaviour
     }
     public void UploadEntry()
     {
+        //If you clear PlayerPrefs, you will be able to submit another score, now as a different player.
+        // sneaky to clear player prefs, then set the assist after to save it
         int score = PlayerPrefs.GetInt("Score", 100);
         Leaderboards.RexyGameJamLeaderboard.UploadNewEntry(usernameInputField.text, score, isSuccessful =>
         {
