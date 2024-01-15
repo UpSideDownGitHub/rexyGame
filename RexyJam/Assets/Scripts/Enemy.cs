@@ -152,7 +152,9 @@ public class Enemy : MonoBehaviour
         {
             _timeOfNextAttack = Time.time + attackTime;
             // fire projectile at player
-            var tempBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.LookRotation(direction));
+            Vector3 targetDir = target.transform.position - transform.position;
+            Quaternion lookDir = Quaternion.LookRotation(targetDir);
+            var tempBullet = Instantiate(bullet, firePoint.transform.position, lookDir);
             tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.up * fireForce);
         }
     }
