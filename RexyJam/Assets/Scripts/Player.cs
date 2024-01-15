@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -31,6 +32,13 @@ public class Player : MonoBehaviour
     public float curHealth;
     public Image healthImage;
 
+    [Header("Score")]
+    public TMP_Text scoreText;
+    public TMP_Text multiplierText;
+    public int score;
+    public float multiplier;
+    public float maxMultiplier;
+
     // INPUT
     private float _lookVec;
     private float _aimVec;
@@ -53,8 +61,27 @@ public class Player : MonoBehaviour
         curHealth = maxHealth;
     }
 
+    public void IncreaseMultiplier()
+    {
+        multiplier = multiplier + 0.1f >= maxMultiplier ? maxMultiplier : multiplier + 0.1f;
+        multiplierText.text = "x " + multiplier;
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += (int)(amount * multiplier);
+        scoreText.text = score + " Pts";
+    }
+
+    public void ResetMultiplier()
+    {
+        multiplierText.text = "";
+        multiplier = 1;
+    }
+
     public void TakeDamage(float damage)
     {
+        ResetMultiplier();
         curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
         healthImage.fillAmount = curHealth / maxHealth;
         if (curHealth == 0)
@@ -97,6 +124,7 @@ public class Player : MonoBehaviour
             _timeOfNextFire = Time.time + fireRate;
             var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.up * fireForce);
+            tempBullet.GetComponent<PlayerBullet>().player = this;
         }
     }
 }

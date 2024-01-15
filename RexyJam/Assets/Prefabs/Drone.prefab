@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5696903777817704930}
   - component: {fileID: 2186176208072594299}
   - component: {fileID: 2386841380601048856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -105,7 +105,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 0
   angleOffset: 0
-  health: 100
+  maxHealth: 0
+  curHealth: 0
+  projectileDamage: 0
+  touchDamage: 0
+  Score: 100
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 1138109646950533058, guid: 350fce1e2b32ff74e9f6164f30b556ed, type: 3}
   fireForce: 500
@@ -119,6 +123,10 @@ MonoBehaviour:
   meleeTime: 0
   movmentSpeed: 0
   turnSpeed: 0
+  rotationSpeed: 90
+  lerpSpeed: 0
+  offset: {x: 0, y: 0, z: 0}
+  died: 0
 --- !u!195 &2186176208072594299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -195,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6744845069728553512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,11 +29,12 @@ public class Enemy : MonoBehaviour
     //[Header("Rotation")]
     public float angleOffset;
 
-    [Header("Health & Damage")]
+    [Header("Health & Damage & Score")]
     public float maxHealth;
     public float curHealth;
     public float projectileDamage;
     public float touchDamage;
+    public int Score = 100;
 
     [Header("Projectiles")]
     public GameObject firePoint;

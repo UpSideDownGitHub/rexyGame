@@ -21,6 +21,9 @@ public class PlayerBullet : MonoBehaviour
     public float turnSpeed;
     public float movmentSpeed;
 
+    [Header("Score")]
+    public Player player;
+
     public void Start()
     {
         assist = PlayerPrefs.GetFloat("Assist", 1);
@@ -71,7 +74,10 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().TakeDamage(damage);
+            var enemy = collision.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
+            player.IncreaseMultiplier();
+            player.IncreaseScore(enemy.Score);
             Destroy(gameObject);
         }
     }

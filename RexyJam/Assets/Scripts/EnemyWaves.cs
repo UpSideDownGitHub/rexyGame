@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +39,11 @@ public class EnemyWaves : MonoBehaviour
     public bool showWaveNumber = true;
     public float showWaveNumberTime;
     private float _timeToHideWaveNumber;
+
+    public void Awake()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7);        
+    }
 
     public void Start()
     {
