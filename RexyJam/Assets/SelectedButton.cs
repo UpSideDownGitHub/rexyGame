@@ -59,7 +59,7 @@ public class SelectedButton : MonoBehaviour
         }
 
     }
-    public void OnSelect(InputAction.CallbackContext ctx)
+    public void OnSelect()
     {
         if (play == true)
         {
