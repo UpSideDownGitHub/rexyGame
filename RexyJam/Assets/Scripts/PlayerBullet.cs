@@ -38,9 +38,9 @@ public class PlayerBullet : MonoBehaviour
         {
             Vector2 direction = closestEnemy.transform.position - transform.position;
             direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            float rotateAmount = Vector3.Cross(direction, transform.right).z;
             rb.angularVelocity = -(turnSpeed * assist) * rotateAmount;
-            rb.velocity = transform.up * movmentSpeed;
+            rb.velocity = transform.right * movmentSpeed;
         }
     }
 

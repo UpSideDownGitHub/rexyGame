@@ -6,6 +6,7 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting.AssemblyQualifiedNameParser;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -40,6 +41,10 @@ public class EnemyWaves : MonoBehaviour
     public float showWaveNumberTime;
     private float _timeToHideWaveNumber;
 
+    [Header("Wave UI")]
+    public Image waveCompletion;
+    public TMP_Text waveCompletionNumber;
+
     public void Awake()
     {
         Physics2D.IgnoreLayerCollision(6, 7);        
@@ -50,6 +55,8 @@ public class EnemyWaves : MonoBehaviour
         currentWave = 0;
         currentWaveInfo = 0;
         waveNumber.text = "Wave 1";
+        waveCompletion.fillAmount = 0;
+        waveCompletionNumber.text = "Wave 1";
         _timeToHideWaveNumber = Time.time + showWaveNumberTime;
     }
 
@@ -82,6 +89,8 @@ public class EnemyWaves : MonoBehaviour
                 else if (currentWave > enemyWaves[currentWaveInfo].maxRound)
                     currentWaveInfo++;
 
+                waveCompletion.fillAmount = 0;
+                waveCompletionNumber.text = "Wave " + (currentWave + 1);
                 waveNumber.text = "Wave " + (currentWave + 1);
                 waveNumber.gameObject.SetActive(true);
                 showWaveNumber = true;
@@ -110,5 +119,6 @@ public class EnemyWaves : MonoBehaviour
     {
         enemyWaves[currentWaveInfo].currentEnemiesOnScreen--;
         enemyWaves[currentWaveInfo].currentEnemyKilledCount++;
+        waveCompletion.fillAmount = (float)enemyWaves[currentWaveInfo].currentEnemyKilledCount / (float)enemyWaves[currentWaveInfo].totalEnemyCount;
     }
 }
