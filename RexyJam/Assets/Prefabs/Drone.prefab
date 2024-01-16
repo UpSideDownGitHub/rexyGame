@@ -110,10 +110,18 @@ MonoBehaviour:
   projectileDamage: 10
   touchDamage: 0
   Score: 100
+  died: 0
+  pickups:
+  - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
+  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
   firePoint: {fileID: 3240121775749491104}
-  bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
+  bullet: {fileID: 4261331493483963901, guid: a6b5379edc585dc44bf18c8b4cd0c597, type: 3}
+  machineGunBullet: {fileID: 0}
   fireForce: 400
-  attackTime: 0.25
+  attackTime: 2.5
+  attackTimeMachineGun: 0
   movmentSpeed: 0
   turnSpeed: 0
   stoppingDistance: 0
@@ -121,13 +129,13 @@ MonoBehaviour:
   maxAttackDistance: 0
   distanceToRetreat: 0
   retreatSpeed: 0
-  meleeDistance: 0
-  meleeTime: 0
+  suicideDistance: 0
   rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
   distance: 0
-  died: 0
+  distanceDecreaseTime: 0
+  distanceDecreaseAmount: 0
 --- !u!195 &2186176208072594299
 NavMeshAgent:
   m_ObjectHideFlags: 0

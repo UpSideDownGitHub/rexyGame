@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     public float touchDamage;
     public int Score = 100;
     public bool died = false;
+    public GameObject[] pickups;
 
     [Header("Shooting")]
     public GameObject firePoint;
@@ -116,6 +117,8 @@ public class Enemy : MonoBehaviour
         {
             died = true;
             GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
+            // have a change to spawn heath or powerup
+            Instantiate(pickups[Random.Range(0, pickups.Length)], transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

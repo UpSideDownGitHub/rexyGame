@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     public PowerupInfo[] powerups;
     public float implosionDamage;
     public float implosionArea;
+    public float healthIncreaseAmount;
 
     // INPUT
     private float _lookVecRex;
@@ -221,8 +222,7 @@ public class Player : MonoBehaviour
         }
         else if (powerupID == 3)
         {
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0;
+            curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
         }
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;
