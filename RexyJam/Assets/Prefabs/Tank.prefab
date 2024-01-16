@@ -113,11 +113,11 @@ MonoBehaviour:
   Score: 100
   died: 0
   firePoint: {fileID: 3240121775749491104}
-  bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
+  bullet: {fileID: 5570516521812618644, guid: 988f41f30c7ca964fbb3482c6ffe152f, type: 3}
   machineGunBullet: {fileID: 4261331493483963901, guid: 033f5ef5a4584f24681e2a393e86931f, type: 3}
   fireForce: 500
   attackTime: 2
-  attackTimeMachineGun: 0.5
+  attackTimeMachineGun: 0.36
   movmentSpeed: 0
   turnSpeed: 0
   stoppingDistance: 3
