@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - EnemySpawner
   - EnemyDeath
+  - PowerUp
   layers:
   - Default
   - TransparentFX
