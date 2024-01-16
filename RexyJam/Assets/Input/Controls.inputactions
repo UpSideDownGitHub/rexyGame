@@ -6,7 +6,7 @@
             "id": "cc6b36ac-0968-4823-b213-1c8014290268",
             "actions": [
                 {
-                    "name": "LeftStick",
+                    "name": "LeftStick Rexy",
                     "type": "Value",
                     "id": "4dba77ca-a4a3-4929-b30a-4c271f21fe32",
                     "expectedControlType": "Axis",
@@ -15,9 +15,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Right Stick",
+                    "name": "LeftStick Controller",
+                    "type": "Value",
+                    "id": "81d476fb-347d-455f-8b90-7d2a7160ad5b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Stick Rexy",
                     "type": "Value",
                     "id": "6950e122-5cb6-4aed-a2ba-29f3f11bd52b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Stick Controller",
+                    "type": "Value",
+                    "id": "20eb96b2-a4d2-4c7c-89e1-9cef59f28369",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -59,7 +77,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftStick",
+                    "action": "LeftStick Rexy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -70,18 +88,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftStick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "193ae6cd-6fe6-44c7-9e64-648b51abcc44",
-                    "path": "<Gamepad>/leftStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftStick",
+                    "action": "LeftStick Rexy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -92,7 +99,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Stick",
+                    "action": "Right Stick Rexy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -103,18 +110,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Stick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "91f63190-712e-474a-a82b-520b5f60e7e7",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right Stick",
+                    "action": "Right Stick Rexy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -142,12 +138,12 @@
                 },
                 {
                     "name": "",
-                    "id": "44ae2552-e6c7-4da7-9c40-6becdc461dfb",
-                    "path": "",
+                    "id": "d01b7cb7-0bcf-41cf-aae1-a7d8205d64a0",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Thrust",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -175,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d23e1f1e-ff9e-4b19-b96f-75faac8aa1bd",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9318f1d8-1419-4577-be7c-14f0c0ddc757",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -183,6 +190,94 @@
                     "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49ea1598-2766-4b4b-80c1-c4328d3e1c68",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "fc91cec7-358d-4bf5-a1c0-c6c3e41ce28d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick Controller",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "5512aef1-4086-45c7-8af3-d7ebad4683f0",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "28466aab-d677-4f52-a3c1-4075d307d5d5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "2ed844fc-5da7-49e2-be85-30507389922b",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "a3ee0c3c-1d4c-401b-8eb1-2ba6f72d4caf",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Controller",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a53e6bf6-96ce-469e-9c3b-910a58b59ea1",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "84ba83fb-7a34-44c9-86dc-655f177dc494",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

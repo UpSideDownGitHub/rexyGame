@@ -40,13 +40,17 @@ public class Player : MonoBehaviour
     public float maxMultiplier;
 
     // INPUT
-    private float _lookVec;
-    private float _aimVec;
+    private float _lookVecRex;
+    private float _lookVecOther;
+    private float _aimVecRex;
+    private float _aimVecOther;
     private bool _thrust;
     private bool _fire;
 
-    public void OnLeftStick(InputAction.CallbackContext ctx) => _lookVec = ctx.ReadValue<float>();
-    public void OnRightStick(InputAction.CallbackContext ctx) => _aimVec = ctx.ReadValue<float>();
+    public void OnLeftStickRex(InputAction.CallbackContext ctx) => _lookVecRex = ctx.ReadValue<float>();
+    public void OnLeftStickOther(InputAction.CallbackContext ctx) => _lookVecOther = ctx.ReadValue<float>();
+    public void OnRightStickRex(InputAction.CallbackContext ctx) => _aimVecRex = ctx.ReadValue<float>();
+    public void OnRightStickOther(InputAction.CallbackContext ctx) => _aimVecOther = ctx.ReadValue<float>();
     public void OnThrust(InputAction.CallbackContext ctx) => _thrust = ctx.action.WasPressedThisFrame();
     public void OnFire(InputAction.CallbackContext ctx)
     {
@@ -94,36 +98,43 @@ public class Player : MonoBehaviour
     {
         rb.angularVelocity = 0;
 
-        if (_lookVec != 0)
+        if (_lookVecRex != 0)
         {
-            var val = _lookVec;
-            if (_lookVec < 0)
-                val = -(1 - Mathf.Abs(_lookVec));
+            var val = _lookVecRex;
+            if (_lookVecRex < 0)
+                val = -(1 - Mathf.Abs(_lookVecRex));
             else
                 val = 1 - val;
             player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * val));
         }
-
-        if (_aimVec != 0)
+        else
         {
-            var val = _aimVec;
-            if (_aimVec < 0)
-                val = -(1 - Mathf.Abs(_aimVec));
+            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * _lookVecOther));
+        }
+
+        if (_aimVecRex != 0)
+        {
+            var val = _aimVecRex;
+            if (_aimVecRex < 0)
+                val = -(1 - Mathf.Abs(_aimVecRex));
             else
                 val = 1 - val;
             gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * val));
         }
+        else
+        {
+            gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * _aimVecOther));
+        }
 
         if (_thrust)
             rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
-        else
-            //rb.velocity = Vector2.zero;
 
         if (_fire && Time.time > _timeOfNextFire)
         {
             _timeOfNextFire = Time.time + fireRate;
-            var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.up * fireForce);
+            var rot = Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90);
+            var tempBullet = Instantiate(bullet, firePoint.transform.position, rot);
+            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
             tempBullet.GetComponent<PlayerBullet>().player = this;
         }
     }

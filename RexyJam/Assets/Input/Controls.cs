@@ -28,7 +28,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""cc6b36ac-0968-4823-b213-1c8014290268"",
             ""actions"": [
                 {
-                    ""name"": ""LeftStick"",
+                    ""name"": ""LeftStick Rexy"",
                     ""type"": ""Value"",
                     ""id"": ""4dba77ca-a4a3-4929-b30a-4c271f21fe32"",
                     ""expectedControlType"": ""Axis"",
@@ -37,9 +37,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Right Stick"",
+                    ""name"": ""LeftStick Controller"",
+                    ""type"": ""Value"",
+                    ""id"": ""81d476fb-347d-455f-8b90-7d2a7160ad5b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Right Stick Rexy"",
                     ""type"": ""Value"",
                     ""id"": ""6950e122-5cb6-4aed-a2ba-29f3f11bd52b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Right Stick Controller"",
+                    ""type"": ""Value"",
+                    ""id"": ""20eb96b2-a4d2-4c7c-89e1-9cef59f28369"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -81,7 +99,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftStick"",
+                    ""action"": ""LeftStick Rexy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -92,18 +110,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""193ae6cd-6fe6-44c7-9e64-648b51abcc44"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftStick"",
+                    ""action"": ""LeftStick Rexy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -114,7 +121,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Stick"",
+                    ""action"": ""Right Stick Rexy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -125,18 +132,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Stick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""91f63190-712e-474a-a82b-520b5f60e7e7"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right Stick"",
+                    ""action"": ""Right Stick Rexy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -164,12 +160,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""44ae2552-e6c7-4da7-9c40-6becdc461dfb"",
-                    ""path"": """",
+                    ""id"": ""d01b7cb7-0bcf-41cf-aae1-a7d8205d64a0"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Thrust"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -197,6 +193,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d23e1f1e-ff9e-4b19-b96f-75faac8aa1bd"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9318f1d8-1419-4577-be7c-14f0c0ddc757"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -205,6 +212,94 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49ea1598-2766-4b4b-80c1-c4328d3e1c68"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""fc91cec7-358d-4bf5-a1c0-c6c3e41ce28d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStick Controller"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5512aef1-4086-45c7-8af3-d7ebad4683f0"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""28466aab-d677-4f52-a3c1-4075d307d5d5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ed844fc-5da7-49e2-be85-30507389922b"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""a3ee0c3c-1d4c-401b-8eb1-2ba6f72d4caf"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick Controller"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a53e6bf6-96ce-469e-9c3b-910a58b59ea1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""84ba83fb-7a34-44c9-86dc-655f177dc494"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -213,8 +308,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_LeftStick = m_Gameplay.FindAction("LeftStick", throwIfNotFound: true);
-        m_Gameplay_RightStick = m_Gameplay.FindAction("Right Stick", throwIfNotFound: true);
+        m_Gameplay_LeftStickRexy = m_Gameplay.FindAction("LeftStick Rexy", throwIfNotFound: true);
+        m_Gameplay_LeftStickController = m_Gameplay.FindAction("LeftStick Controller", throwIfNotFound: true);
+        m_Gameplay_RightStickRexy = m_Gameplay.FindAction("Right Stick Rexy", throwIfNotFound: true);
+        m_Gameplay_RightStickController = m_Gameplay.FindAction("Right Stick Controller", throwIfNotFound: true);
         m_Gameplay_Thrust = m_Gameplay.FindAction("Thrust", throwIfNotFound: true);
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
@@ -279,8 +376,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_Gameplay_LeftStick;
-    private readonly InputAction m_Gameplay_RightStick;
+    private readonly InputAction m_Gameplay_LeftStickRexy;
+    private readonly InputAction m_Gameplay_LeftStickController;
+    private readonly InputAction m_Gameplay_RightStickRexy;
+    private readonly InputAction m_Gameplay_RightStickController;
     private readonly InputAction m_Gameplay_Thrust;
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Select;
@@ -288,8 +387,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftStick => m_Wrapper.m_Gameplay_LeftStick;
-        public InputAction @RightStick => m_Wrapper.m_Gameplay_RightStick;
+        public InputAction @LeftStickRexy => m_Wrapper.m_Gameplay_LeftStickRexy;
+        public InputAction @LeftStickController => m_Wrapper.m_Gameplay_LeftStickController;
+        public InputAction @RightStickRexy => m_Wrapper.m_Gameplay_RightStickRexy;
+        public InputAction @RightStickController => m_Wrapper.m_Gameplay_RightStickController;
         public InputAction @Thrust => m_Wrapper.m_Gameplay_Thrust;
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Select => m_Wrapper.m_Gameplay_Select;
@@ -302,12 +403,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
-            @LeftStick.started += instance.OnLeftStick;
-            @LeftStick.performed += instance.OnLeftStick;
-            @LeftStick.canceled += instance.OnLeftStick;
-            @RightStick.started += instance.OnRightStick;
-            @RightStick.performed += instance.OnRightStick;
-            @RightStick.canceled += instance.OnRightStick;
+            @LeftStickRexy.started += instance.OnLeftStickRexy;
+            @LeftStickRexy.performed += instance.OnLeftStickRexy;
+            @LeftStickRexy.canceled += instance.OnLeftStickRexy;
+            @LeftStickController.started += instance.OnLeftStickController;
+            @LeftStickController.performed += instance.OnLeftStickController;
+            @LeftStickController.canceled += instance.OnLeftStickController;
+            @RightStickRexy.started += instance.OnRightStickRexy;
+            @RightStickRexy.performed += instance.OnRightStickRexy;
+            @RightStickRexy.canceled += instance.OnRightStickRexy;
+            @RightStickController.started += instance.OnRightStickController;
+            @RightStickController.performed += instance.OnRightStickController;
+            @RightStickController.canceled += instance.OnRightStickController;
             @Thrust.started += instance.OnThrust;
             @Thrust.performed += instance.OnThrust;
             @Thrust.canceled += instance.OnThrust;
@@ -321,12 +428,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IGameplayActions instance)
         {
-            @LeftStick.started -= instance.OnLeftStick;
-            @LeftStick.performed -= instance.OnLeftStick;
-            @LeftStick.canceled -= instance.OnLeftStick;
-            @RightStick.started -= instance.OnRightStick;
-            @RightStick.performed -= instance.OnRightStick;
-            @RightStick.canceled -= instance.OnRightStick;
+            @LeftStickRexy.started -= instance.OnLeftStickRexy;
+            @LeftStickRexy.performed -= instance.OnLeftStickRexy;
+            @LeftStickRexy.canceled -= instance.OnLeftStickRexy;
+            @LeftStickController.started -= instance.OnLeftStickController;
+            @LeftStickController.performed -= instance.OnLeftStickController;
+            @LeftStickController.canceled -= instance.OnLeftStickController;
+            @RightStickRexy.started -= instance.OnRightStickRexy;
+            @RightStickRexy.performed -= instance.OnRightStickRexy;
+            @RightStickRexy.canceled -= instance.OnRightStickRexy;
+            @RightStickController.started -= instance.OnRightStickController;
+            @RightStickController.performed -= instance.OnRightStickController;
+            @RightStickController.canceled -= instance.OnRightStickController;
             @Thrust.started -= instance.OnThrust;
             @Thrust.performed -= instance.OnThrust;
             @Thrust.canceled -= instance.OnThrust;
@@ -355,8 +468,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public GameplayActions @Gameplay => new GameplayActions(this);
     public interface IGameplayActions
     {
-        void OnLeftStick(InputAction.CallbackContext context);
-        void OnRightStick(InputAction.CallbackContext context);
+        void OnLeftStickRexy(InputAction.CallbackContext context);
+        void OnLeftStickController(InputAction.CallbackContext context);
+        void OnRightStickRexy(InputAction.CallbackContext context);
+        void OnRightStickController(InputAction.CallbackContext context);
         void OnThrust(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
