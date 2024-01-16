@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class HealthGaugeFunctions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator bulbAnimator;
+    public GameObject gaugeArrow;
+
+    public void CheckHealth(float currentHealth, float maxHealth)
     {
-        
+        if (currentHealth / maxHealth <= 0.2f)
+        {
+            TriggerLight(true);
+        }
+        else
+        {
+            TriggerLight(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TriggerLight(bool state)
     {
-        
+        bulbAnimator.SetBool("Light On", state);
+    }
+
+    private IEnumerator ChangeGauge()
+    {
+        gaugeArrow.transform.eulerAngles = new Vector2();
+        yield return null;
     }
 }
