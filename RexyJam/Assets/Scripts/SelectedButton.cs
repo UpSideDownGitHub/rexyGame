@@ -1,3 +1,4 @@
+using Dan.Main;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,84 +7,65 @@ using UnityEngine.SceneManagement;
 
 public class SelectedButton : MonoBehaviour
 {
-    public bool play, settings, quit, controls, leaderboards;
+    public bool[] selected;
+    public int previous = 0;
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Play"))
+        switch (collision.tag)
         {
-            play = true;
-            settings = false;
-            quit = false;
-            controls = false;
-            leaderboards = false;
+            case "Play":
+                selected[previous] = false;
+                previous = 0;
+                selected[0] = true;
+                break;
+            case "Settings":
+                selected[previous] = false;
+                previous = 1;
+                selected[1] = true;
+                break;
+            case "Quit":
+                selected[previous] = false;
+                previous = 2;
+                selected[2] = true;
+                break;
+            case "Controls":
+                selected[previous] = false;
+                previous = 3;
+                selected[3] = true;
+                break;
+            case "Leaderboards":
+                selected[previous] = false;
+                previous = 4;
+                selected[4] = true;
+                break;
+            default:
+                break;
 
         }
-
-        else if (collision.tag == ("Settings"))
-        {
-            settings = true;
-            play = false;
-            quit = false;
-            controls = false;
-            leaderboards = false;
-        }
-
-        else if (collision.tag == ("Quit"))
-        {
-            quit = true;
-            play = false;
-            settings = false;
-            controls = false;
-            leaderboards = false;
-        }
-
-        else if (collision.tag == ("Controls"))
-        {
-            controls = true;
-            play = false;
-            settings = false;
-            quit = false;
-            leaderboards = false;
-        }
-
-        else if (collision.tag == ("Leaderboards"))
-        {
-            leaderboards = true;
-            play = false;
-            settings = false;
-            quit = false;
-            controls = false;
-
-        }
-
     }
-    public void OnSelect()
+
+    public void ConfirmPressed()
     {
-        if (play == true)
+        if (selected[0]) // play
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadSceneAsync("SampleScene");
         }
-
-        else if (settings == true)
+        else if (selected[1]) // settings
         {
-
+            print("Settings Pressed");
         }
-
-        else if (quit == true)
+        else if (selected[2]) // quit
         {
-
+            print("Quit Pressed");
         }
-
-        else if (controls == true)
+        else if (selected[3]) // controls
         {
-
+            print("Controls Pressed");
         }
-
-        else if (leaderboards == true)
+        else if (selected[4]) // leaderboard
         {
-
+            print("Leaderboard Pressed");
         }
     }
 }

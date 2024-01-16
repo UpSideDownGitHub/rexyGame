@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealthGaugeFunctions : MonoBehaviour
@@ -10,8 +11,29 @@ public class HealthGaugeFunctions : MonoBehaviour
     public float gaugeSpeed;
     public GameObject[] gaugeLights;
 
+    public TMP_Text[] healthNixieTexts;
+
     public void CheckHealth(float currentHealth, float maxHealth)
     {
+        if (currentHealth == 100)
+        {
+            healthNixieTexts[0].text = "1";
+            healthNixieTexts[1].text = "0";
+            healthNixieTexts[2].text = "0";
+        }
+        else
+        {
+            string health = currentHealth.ToString();
+            var healthList = health.ToCharArray();
+
+            healthNixieTexts[0].text = "0";
+
+            for (int i = 0; i < healthList.Length; i++)
+            {
+                healthNixieTexts[i + 1].text = healthList[i].ToString();
+            }
+        }
+
         for (int i = 0; i < gaugeLights.Length; i++)
         {
             if (i * (1/11) <= currentHealth / maxHealth)
