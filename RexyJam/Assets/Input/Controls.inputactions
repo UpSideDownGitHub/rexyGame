@@ -193,6 +193,39 @@
                 },
                 {
                     "name": "",
+                    "id": "8cab8e74-86ce-4db5-b00c-1d5750f9ea81",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6599f38d-d1f6-41ce-9dab-12cae86fd23c",
+                    "path": "<HID::Real Pro Gear Rexy Wheels Device>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf27528b-562c-4b06-95b7-9c7a82ebb3d0",
+                    "path": "<HID::Real Pro Gear Rexy Wheels Device>/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "49ea1598-2766-4b4b-80c1-c4328d3e1c68",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
