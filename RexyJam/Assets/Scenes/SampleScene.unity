@@ -2653,8 +2653,8 @@ MonoBehaviour:
   rotationSpeed: 2
   gunRotationSpeed: 5
   thrustForce: 10
-  bullet: {fileID: 4261331493483963901, guid: 79e22c1337cb2f34db7906da02beaa5f, type: 3}
-  fireForce: 100
+  bullet: {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
+  fireForce: 250
   fireRate: 0.2
   maxHealth: 100
   curHealth: 100
