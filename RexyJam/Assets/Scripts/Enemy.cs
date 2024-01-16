@@ -12,9 +12,9 @@ public enum EnemyType
 {
     DRONE,
     SNIPER,
-    RUSHER,
+    BUG,
     KAMA,
-    CIRCLE
+    TANK
 }
 
 public class Enemy : MonoBehaviour
@@ -35,43 +35,49 @@ public class Enemy : MonoBehaviour
     public float projectileDamage;
     public float touchDamage;
     public int Score = 100;
+    public bool died = false;
 
-    [Header("Projectiles")]
+    [Header("Shooting")]
     public GameObject firePoint;
     public GameObject bullet;
+    public GameObject machineGunBullet;
     public float fireForce;
-
-    [Header("Attacking")]
     public float attackTime;
     private float _timeOfNextAttack;
+    public float attackTimeMachineGun;
+    private float _timeOfNextAttackMachineGun;
 
-    [Header("Sniper")]
+    [Header("Rusher & Bug")]
+    public float movmentSpeed;
+    public float turnSpeed;
+
+    [Header("Sniper & Tank")]
     public float stoppingDistance;
     public float minAttackDistance;
     public float maxAttackDistance;
     public float distanceToRetreat;
     public float retreatSpeed;
-    public float meleeDistance;
-    public float meleeTime;
+    public float suicideDistance;
 
-    [Header("Rusher")]
-    public float movmentSpeed;
-    public float turnSpeed;
 
-    [Header("Circle")]
+    [Header("Kamakarzie")]
     public float rotationSpeed = 90f;
     public float lerpSpeed;
     public Vector3 offset;
     private Transform pivot;
     private Vector3 offsetDirection;
-    private float distance;
-    public bool died = false;
+    public float distance;
+    public float distanceDecreaseTime;
+    public float distanceDecreaseAmount;
+    private float _timeForNextDecrease;
+    
+
 
 
 
     public void Awake()
     {
-        if (type != EnemyType.RUSHER && type != EnemyType.KAMA && type != EnemyType.CIRCLE)
+        if (type != EnemyType.BUG && type != EnemyType.KAMA && type != EnemyType.KAMA)
         {
             agent.updateUpAxis = false;
             agent.updateRotation = false;
@@ -90,11 +96,11 @@ public class Enemy : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player");
 
-        if (type == EnemyType.RUSHER)
+        if (type == EnemyType.BUG)
         {
             Rotate(transform.position);
         }
-        else if (type == EnemyType.CIRCLE)
+        else if (type == EnemyType.KAMA)
         {
             pivot = target.transform;
             offsetDirection = transform.position - pivot.position;
@@ -118,23 +124,22 @@ public class Enemy : MonoBehaviour
     {
         switch (type)
         {
+            case EnemyType.BUG:
+                Bug();
+                break;
             case EnemyType.DRONE:
                 Drone();
-                break;
-            case EnemyType.SNIPER:
-                Sniper();
-                break;
-             case EnemyType.RUSHER:
-                Rusher();
                 break;
             case EnemyType.KAMA:
                 Kama();
                 break;
-            case EnemyType.CIRCLE:
-                Circle();
+            case EnemyType.SNIPER:
+                Sniper();
+                break;
+            case EnemyType.TANK:
+                Tank();
                 break;
         }
-        
     }
 
     public void Rotate(Vector3 pos)
@@ -144,18 +149,92 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            switch (type)
+            {
+                case EnemyType.BUG:
+                    collision.gameObject.GetComponent<Player>().TakeDamage(touchDamage);
+                    // PLAY BUG DEATH SOUND HERE
+                    // SPAWN BUG DEATH PARTICLE HERE
+                    Destroy(gameObject);
+                    break;
+                case EnemyType.DRONE:
+                    // DO NOTHING
+                    break;
+                case EnemyType.KAMA:
+                    collision.gameObject.GetComponent<Player>().TakeDamage(touchDamage);
+                    // PLAY BUG DEATH SOUND HERE
+                    // SPAWN BUG DEATH PARTICLE HERE
+                    Destroy(gameObject);
+                    break;
+                case EnemyType.SNIPER:
+                    // DO NOTHING
+                    break;
+                case EnemyType.TANK:
+                    // DO NOTHING
+                    break;
+            }
+        }
+        else if (collision.gameObject.CompareTag("EnemyDeath"))
+            Destroy(gameObject);
+    }
+
+    public void Bug()
+    {
+        Vector2 direction = target.transform.position - transform.position;
+        direction.Normalize();
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+        rb.angularVelocity = -turnSpeed * rotateAmount;
+        rb.velocity = transform.up * movmentSpeed;
+    }
+
     public void Drone()
     {
         Rotate(transform.position);
         agent.SetDestination(target.transform.position);
+
+        if (Time.time > _timeOfNextAttack)
+        {
+            _timeOfNextAttack = Time.time + attackTime;
+            var rot = Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90);
+            var tempBullet = Instantiate(bullet, firePoint.transform.position, rot);
+            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+            tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
+        }
+    }
+
+    public void Kama()
+    {
+        Rotate(transform.position);
+
+        Quaternion rotate = Quaternion.Euler(0, 0, rotationSpeed * Time.deltaTime);
+        offsetDirection = (rotate * offsetDirection).normalized;
+        var pos = Vector3.Lerp(transform.position, pivot.position + offsetDirection * distance, lerpSpeed * Time.deltaTime);
+        transform.position = pos;
+
+        if (Time.time > _timeForNextDecrease)
+        {
+            _timeForNextDecrease = Time.time + distanceDecreaseTime;
+            distance = distance - distanceDecreaseAmount <= 0 ? 0 : distance - distanceDecreaseAmount;
+        }
     }
 
     public void Sniper()
     {
         var distance = Vector3.Distance(transform.position, target.transform.position);
 
-        if (distance < distanceToRetreat)
+        if (distance < suicideDistance)
         {
+            // SPAWN EXPLOSION PARTICLE
+            target.GetComponent<Player>().TakeDamage(touchDamage);
+            Destroy(gameObject);
+        }
+        else if (distance < distanceToRetreat)
+        {
+            // SPAWN WARNING EFFECT
             agent.stoppingDistance = 0;
             Vector3 dirToPlayer = transform.position - target.transform.position;
             Vector3 newPos = transform.position + dirToPlayer;
@@ -175,53 +254,41 @@ public class Enemy : MonoBehaviour
                 // fire projectile at player
                 var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                 tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
             }
         }
     }
 
-    public void Rusher()
+    public void Tank()
     {
-        Vector2 direction = target.transform.position - transform.position;
-        direction.Normalize();
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        rb.angularVelocity = -turnSpeed * rotateAmount;
-        rb.velocity = transform.up * movmentSpeed;
-    }
-
-    public void Kama()
-    {
-        Vector2 direction = target.transform.position - transform.position;
-        direction.Normalize();
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        rb.angularVelocity = -turnSpeed * rotateAmount;
-        rb.velocity = transform.up * movmentSpeed;
-
-        if (Time.time > _timeOfNextAttack)
-        {
-            _timeOfNextAttack = Time.time + attackTime;
-            // fire projectile at player
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.Euler(0f, 0f, angle);
-            var tempBullet = Instantiate(bullet, firePoint.transform.position, q);
-            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-        }
-    }
-
-    public void Circle()
-    {
+        var distance = Vector3.Distance(transform.position, target.transform.position);
+        
         Rotate(transform.position);
+        agent.SetDestination(target.transform.position);
 
-        Quaternion rotate = Quaternion.Euler(0, 0, rotationSpeed * Time.deltaTime);
-        offsetDirection = (rotate * offsetDirection).normalized;
-        var pos = Vector3.Lerp(transform.position, pivot.position + offsetDirection * distance, lerpSpeed * Time.deltaTime);
-        transform.position = pos;
-
-        if (Time.time > _timeOfNextAttack)
+        if (distance < distanceToRetreat)
         {
-            _timeOfNextAttack = Time.time + attackTime;
-            // fire projectile at player
-            var tempBullet = Instantiate(bullet, firePoint.transform.position, transform.rotation);
-            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+            if (Time.time > _timeOfNextAttackMachineGun)
+            {
+                _timeOfNextAttackMachineGun = Time.time + attackTimeMachineGun;
+                // fire projectile at player
+                var tempBullet = Instantiate(machineGunBullet, firePoint.transform.position, firePoint.transform.rotation);
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<EnemyBullet>().damage = touchDamage;
+            }
+        }
+        else
+        {
+            if (Time.time > _timeOfNextAttack)
+            {
+                _timeOfNextAttack = Time.time + attackTime;
+                // fire projectile at player
+                var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
+            }
         }
     }
+
+
 }
