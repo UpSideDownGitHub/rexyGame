@@ -11,6 +11,8 @@ TagManager:
   - Leaderboards
   - Enemy
   - EnemySpawner
+  - EnemyDeath
+  - PowerUp
   layers:
   - Default
   - TransparentFX

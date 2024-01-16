@@ -105,28 +105,37 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 0
   angleOffset: 0
-  maxHealth: 0
-  curHealth: 0
-  projectileDamage: 0
+  maxHealth: 100
+  curHealth: 100
+  projectileDamage: 10
   touchDamage: 0
   Score: 100
+  died: 0
+  pickups:
+  - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
+  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
   firePoint: {fileID: 3240121775749491104}
-  bullet: {fileID: 1138109646950533058, guid: 350fce1e2b32ff74e9f6164f30b556ed, type: 3}
-  fireForce: 500
-  attackTime: 0
+  bullet: {fileID: 4261331493483963901, guid: a6b5379edc585dc44bf18c8b4cd0c597, type: 3}
+  machineGunBullet: {fileID: 0}
+  fireForce: 400
+  attackTime: 2.5
+  attackTimeMachineGun: 0
+  movmentSpeed: 0
+  turnSpeed: 0
   stoppingDistance: 0
   minAttackDistance: 0
   maxAttackDistance: 0
   distanceToRetreat: 0
   retreatSpeed: 0
-  meleeDistance: 0
-  meleeTime: 0
-  movmentSpeed: 0
-  turnSpeed: 0
+  suicideDistance: 0
   rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
-  died: 0
+  distance: 0
+  distanceDecreaseTime: 0
+  distanceDecreaseAmount: 0
 --- !u!195 &2186176208072594299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -141,7 +150,7 @@ NavMeshAgent:
   m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 5
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -218,10 +227,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3240121775749491104}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3791411190669491303}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
