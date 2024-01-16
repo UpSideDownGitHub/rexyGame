@@ -105,9 +105,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 0
   angleOffset: 0
-  maxHealth: 100
-  curHealth: 100
-  projectileDamage: 10
+  maxHealth: 3
+  curHealth: 3
+  projectileDamage: 5
   touchDamage: 0
   Score: 100
   died: 0
