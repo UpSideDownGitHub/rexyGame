@@ -112,6 +112,11 @@ MonoBehaviour:
   touchDamage: 5
   Score: 100
   died: 0
+  pickups:
+  - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
+  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 5570516521812618644, guid: 988f41f30c7ca964fbb3482c6ffe152f, type: 3}
   machineGunBullet: {fileID: 4261331493483963901, guid: 033f5ef5a4584f24681e2a393e86931f, type: 3}
