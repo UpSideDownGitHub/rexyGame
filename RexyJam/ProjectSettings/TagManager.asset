@@ -10,6 +10,7 @@ TagManager:
   - Controls
   - Leaderboards
   - Enemy
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Walls
   - 
   - 
   - 

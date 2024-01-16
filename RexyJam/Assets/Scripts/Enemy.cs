@@ -29,8 +29,12 @@ public class Enemy : MonoBehaviour
     //[Header("Rotation")]
     public float angleOffset;
 
-    [Header("Health")]
-    public float health;
+    [Header("Health & Damage & Score")]
+    public float maxHealth;
+    public float curHealth;
+    public float projectileDamage;
+    public float touchDamage;
+    public int Score = 100;
 
     [Header("Projectiles")]
     public GameObject firePoint;
@@ -61,6 +65,7 @@ public class Enemy : MonoBehaviour
     private Transform pivot;
     private Vector3 offsetDirection;
     private float distance;
+    public bool died = false;
 
 
 
@@ -71,6 +76,14 @@ public class Enemy : MonoBehaviour
             agent.updateUpAxis = false;
             agent.updateRotation = false;
         }
+    }
+
+    public void SetMultipliers(float health, float damage)
+    {
+        touchDamage *= damage;
+        projectileDamage *= damage;
+        maxHealth *= health;
+        curHealth = maxHealth;
     }
 
     public void Start()
@@ -91,10 +104,12 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health = health - damage <= 0 ? 0 : health - damage;
+        curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
         
-        if (health == 0)
+        if (curHealth == 0 && !died)
         {
+            died = true;
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
             Destroy(gameObject);
         }
     }

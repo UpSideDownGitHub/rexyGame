@@ -163,3 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   timeAlive: 5
+  assist: 0
+  assistArea: 20
+  viewAngle: 50
+  closestEnemy: {fileID: 0}
+  rb: {fileID: 3647759679482611832}
+  turnSpeed: 100
+  movmentSpeed: 3
