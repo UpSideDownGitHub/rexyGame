@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthGaugeFunctions : MonoBehaviour
 {
     public Animator bulbAnimator;
+    public Animator bobbleHeadAnimator;
     public GameObject gaugeArrow;
 
     public float gaugeSpeed;
@@ -15,6 +16,8 @@ public class HealthGaugeFunctions : MonoBehaviour
 
     public void CheckHealth(float currentHealth, float maxHealth)
     {
+        bobbleHeadAnimator.SetTrigger("Shake");
+
         if (currentHealth == 100)
         {
             healthNixieTexts[0].text = "1";
