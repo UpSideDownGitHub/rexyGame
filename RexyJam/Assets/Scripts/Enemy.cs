@@ -116,6 +116,7 @@ public class Enemy : MonoBehaviour
         {
             died = true;
             GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
+            // have a change to spawn heath or powerup
             Destroy(gameObject);
         }
     }

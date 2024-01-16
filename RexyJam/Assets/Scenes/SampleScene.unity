@@ -2683,6 +2683,7 @@ MonoBehaviour:
     timeToDisable: 0
   implosionDamage: 75
   implosionArea: 10
+  healthIncreaseAmount: 10
 --- !u!114 &1069265227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,11 +5314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5176225832017490603, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.64
+      value: 7.71
       objectReference: {fileID: 0}
     - target: {fileID: 5176225832017490603, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.13
+      value: -4.27
       objectReference: {fileID: 0}
     - target: {fileID: 5176225832017490603, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
       propertyPath: m_LocalPosition.z

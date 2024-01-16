@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupID: 2
+  lerpTime: 2
+  attactDistance: 5
+  attracted: 0
