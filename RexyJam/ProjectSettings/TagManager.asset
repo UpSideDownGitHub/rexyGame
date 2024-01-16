@@ -11,6 +11,7 @@ TagManager:
   - Leaderboards
   - Enemy
   - EnemySpawner
+  - EnemyDeath
   layers:
   - Default
   - TransparentFX

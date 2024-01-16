@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2386841380601048856}
   - component: {fileID: 5418665276960504193}
   m_Layer: 6
-  m_Name: Circle
+  m_Name: Kamakarzie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
+  - {fileID: 2100000, guid: 1f41a1c32b5a746468d5009b0aa6b22d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 803c30ec50b0982408b303ab0b666e11, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.69019794, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,17 +104,20 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 0}
   rb: {fileID: 0}
-  type: 4
+  type: 3
   angleOffset: 90
-  maxHealth: 0
-  curHealth: 0
-  projectileDamage: 0
-  touchDamage: 0
+  maxHealth: 100
+  curHealth: 100
+  projectileDamage: 10
+  touchDamage: 20
   Score: 100
+  died: 0
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
   fireForce: 500
   attackTime: 2
+  movmentSpeed: 0
+  turnSpeed: 0
   stoppingDistance: 6
   minAttackDistance: 5
   maxAttackDistance: 7
@@ -122,12 +125,12 @@ MonoBehaviour:
   retreatSpeed: 5
   meleeDistance: 1
   meleeTime: 1
-  movmentSpeed: 0
-  turnSpeed: 0
   rotationSpeed: 90
   lerpSpeed: 2
   offset: {x: 0, y: 5, z: 0}
-  died: 0
+  distance: 0
+  distanceDecreaseTime: 0.2
+  distanceDecreaseAmount: 0.1
 --- !u!61 &2386841380601048856
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -60,6 +60,11 @@ public class Player : MonoBehaviour
             _fire = false;
     }
 
+    public void Awake()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7);
+    }
+
     public void Start()
     {
         curHealth = maxHealth;

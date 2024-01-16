@@ -45,11 +45,6 @@ public class EnemyWaves : MonoBehaviour
     public Image waveCompletion;
     public TMP_Text waveCompletionNumber;
 
-    public void Awake()
-    {
-        Physics2D.IgnoreLayerCollision(6, 7);        
-    }
-
     public void Start()
     {
         currentWave = 0;
