@@ -7,6 +7,9 @@ public class HealthGaugeFunctions : MonoBehaviour
 {
     public Animator bulbAnimator;
     public Animator bobbleHeadAnimator;
+    public Animator newWaveBulbs;
+    public Animator multiplierBulbs;
+
     public GameObject gaugeArrow;
 
     public float gaugeSpeed;
@@ -73,9 +76,19 @@ public class HealthGaugeFunctions : MonoBehaviour
 
         while (newRotation < 1 - healthPercent)
         {
-            newRotation -= 1 - healthPercent * gaugeSpeed;
+            newRotation -= 1 - healthPercent * gaugeSpeed * Time.deltaTime;
             gaugeArrow.transform.eulerAngles = new Vector3(0, 0, newRotation);
         }
         yield return null;
+    }
+
+    public void NewWaveBulbs()
+    {
+        newWaveBulbs.SetTrigger("New Wave");
+    }
+
+    public void SetMultiplierBulbs(bool active)
+    {
+        multiplierBulbs.SetBool("Multiplier Active", active);
     }
 }
