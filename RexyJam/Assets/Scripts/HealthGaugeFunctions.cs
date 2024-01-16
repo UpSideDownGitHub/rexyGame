@@ -21,23 +21,15 @@ public class HealthGaugeFunctions : MonoBehaviour
     {
         bobbleHeadAnimator.SetTrigger("Shake");
 
-        if (currentHealth == 100)
-        {
-            healthNixieTexts[0].text = "1";
-            healthNixieTexts[1].text = "0";
-            healthNixieTexts[2].text = "0";
-        }
-        else
-        {
-            string health = currentHealth.ToString();
-            var healthList = health.ToCharArray();
+        string health = currentHealth.ToString();
+        var healthList = health.ToCharArray();
 
-            healthNixieTexts[0].text = "0";
-
-            for (int i = 0; i < healthList.Length; i++)
-            {
-                healthNixieTexts[i + 1].text = healthList[i].ToString();
-            }
+        for (int i = 2; i >= 0; i--)
+        {
+            if (healthList.Length > i)
+                healthNixieTexts[i].text = healthList[i].ToString();
+            else
+                healthNixieTexts[i].text = "0";
         }
 
         for (int i = 0; i < gaugeLights.Length; i++)
@@ -52,6 +44,7 @@ public class HealthGaugeFunctions : MonoBehaviour
             }
         }
 
+        StopAllCoroutines();
         StartCoroutine(ChangeGauge(currentHealth, maxHealth));
 
         if (currentHealth / maxHealth <= 0.25f)
@@ -72,14 +65,38 @@ public class HealthGaugeFunctions : MonoBehaviour
     private IEnumerator ChangeGauge(float currentHealth, float maxHealth)
     {
         float healthPercent = currentHealth / maxHealth;
-        float newRotation = 0;
+        float targetRotation = 180 * (1 - healthPercent);
+        float currentRotation = gaugeArrow.transform.eulerAngles.z;
+        int failSafe = 0;
 
-        while (newRotation < 1 - healthPercent)
+
+        
+        gaugeArrow.GetComponent<Animator>().enabled = false;
+        if (currentRotation > targetRotation)
         {
-            newRotation -= 1 - healthPercent * gaugeSpeed * Time.deltaTime;
-            gaugeArrow.transform.eulerAngles = new Vector3(0, 0, newRotation);
+            while (currentRotation > targetRotation)
+            {
+                failSafe++;
+                currentRotation -= gaugeSpeed * Time.deltaTime;
+                gaugeArrow.transform.eulerAngles = new Vector3(0, 0, currentRotation);
+                yield return null;
+                if (failSafe >= 200)
+                    break;
+            }
         }
-        yield return null;
+        else
+        {
+            while (currentRotation < targetRotation)
+            {
+                failSafe++;
+                currentRotation += gaugeSpeed * Time.deltaTime;
+                gaugeArrow.transform.eulerAngles = new Vector3(0, 0, currentRotation);
+                yield return null;
+                if (failSafe >= 200)
+                    break;
+            }
+        }
+        gaugeArrow.GetComponent<Animator>().enabled = true;
     }
 
     public void NewWaveBulbs()

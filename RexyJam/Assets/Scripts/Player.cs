@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
     public float implosionArea;
     public float healthIncreaseAmount;
 
+    [Header("UI")]
+    public HealthGaugeFunctions healthGaugeFunctions;
+
     // INPUT
     private float _lookVecRex;
     private float _lookVecOther;
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour
     public void IncreaseMultiplier()
     {
         multiplier = multiplier + 0.1f >= maxMultiplier ? maxMultiplier : multiplier + 0.1f;
+        healthGaugeFunctions.SetMultiplierBulbs(true);
         multiplierText.text = "x " + multiplier;
     }
 
@@ -111,6 +115,8 @@ public class Player : MonoBehaviour
         {
             ResetMultiplier();
             curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
+            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+            healthGaugeFunctions.SetMultiplierBulbs(false);
             healthImage.fillAmount = curHealth / maxHealth;
             if (curHealth == 0)
             {
@@ -164,11 +170,10 @@ public class Player : MonoBehaviour
             gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * _aimVecOther));
         }
 
-        if (!powerups[3].enabled)
-        {
-            if (_thrust)
-                rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
-        }
+
+        if (_thrust)
+            rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
+
 
         if (_fire && Time.time > _timeOfNextFire)
         {
@@ -177,7 +182,7 @@ public class Player : MonoBehaviour
                 _timeOfNextFire = Time.time + fireRate;
                 for (int i = 0; i < firePoint.Length; i++)
                 {
-                    var rot = Quaternion.Euler(firePoint[i].transform.rotation.eulerAngles.x, 
+                    var rot = Quaternion.Euler(firePoint[i].transform.rotation.eulerAngles.x,
                         firePoint[i].transform.rotation.eulerAngles.y,
                         firePoint[i].transform.rotation.eulerAngles.z + 90);
                     var tempBullet = Instantiate(bullet, firePoint[i].transform.position, rot);
@@ -189,7 +194,7 @@ public class Player : MonoBehaviour
             else
             {
                 _timeOfNextFire = Time.time + fireRate;
-                var rot = Quaternion.Euler(firePoint[0].transform.rotation.eulerAngles.x, 
+                var rot = Quaternion.Euler(firePoint[0].transform.rotation.eulerAngles.x,
                     firePoint[0].transform.rotation.eulerAngles.y,
                     firePoint[0].transform.rotation.eulerAngles.z + 90);
                 var tempBullet = Instantiate(bullet, firePoint[0].transform.position, rot);
@@ -224,6 +229,8 @@ public class Player : MonoBehaviour
         else if (powerupID == 3)
         {
             curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
+            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+            healthImage.fillAmount = curHealth / maxHealth;
         }
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;

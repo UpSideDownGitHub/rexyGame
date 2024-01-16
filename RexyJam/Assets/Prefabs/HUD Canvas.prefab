@@ -4113,7 +4113,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3b23e12b7e08fe44f88f6fd6b160b68f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -9020,7 +9020,7 @@ MonoBehaviour:
   newWaveBulbs: {fileID: 2292463032646026266}
   multiplierBulbs: {fileID: 4753861052296996753}
   gaugeArrow: {fileID: 4214570570672097572}
-  gaugeSpeed: 0.05
+  gaugeSpeed: 0.1
   gaugeLights:
   - {fileID: 6911058702542715656}
   - {fileID: 7668491811772484257}

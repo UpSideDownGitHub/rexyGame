@@ -44,6 +44,7 @@ public class EnemyWaves : MonoBehaviour
     [Header("Wave UI")]
     public Image waveCompletion;
     public TMP_Text waveCompletionNumber;
+    public HealthGaugeFunctions healthGaugeFunctions;
 
     public void Start()
     {
@@ -87,6 +88,7 @@ public class EnemyWaves : MonoBehaviour
                 waveCompletion.fillAmount = 0;
                 waveCompletionNumber.text = "Wave " + (currentWave + 1);
                 waveNumber.text = "Wave " + (currentWave + 1);
+                healthGaugeFunctions.NewWaveBulbs();
                 waveNumber.gameObject.SetActive(true);
                 showWaveNumber = true;
                 _timeToHideWaveNumber = Time.time + showWaveNumberTime;
