@@ -156,11 +156,11 @@ public class Player : MonoBehaviour
                 val = -(1 - Mathf.Abs(_aimVecRex));
             else
                 val = 1 - val;
-            gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * val));
+            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * val));
         }
         else
         {
-            gun.transform.Rotate(new Vector3(0, 0, -gunRotationSpeed * _aimVecOther));
+            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * _aimVecOther));
         }
 
         if (!powerups[3].enabled)
