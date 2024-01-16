@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5696903777817704930}
   - component: {fileID: 2186176208072594299}
   - component: {fileID: 2386841380601048856}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Sniper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -106,11 +106,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 1
   angleOffset: 90
-  maxHealth: 100
-  curHealth: 100
+  maxHealth: 8
+  curHealth: 8
   projectileDamage: 10
-  touchDamage: 20
-  Score: 100
+  touchDamage: 25
+  Score: 150
   died: 0
   pickups:
   - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6744845069728553512}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5234950419688159839}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Follow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

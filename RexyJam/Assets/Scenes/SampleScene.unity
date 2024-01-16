@@ -1275,7 +1275,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 603474864}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5121b7abad3d3724386de0f0253bfb83, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1667,7 +1667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668140406}
   - component: {fileID: 668140405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1965,7 +1965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 896897814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2349,7 +2349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983007758}
   - component: {fileID: 983007759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2607,7 +2607,7 @@ GameObject:
   - component: {fileID: 1069265226}
   - component: {fileID: 1069265229}
   - component: {fileID: 1069265228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Parent
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2654,8 +2654,8 @@ MonoBehaviour:
   gunRotationSpeed: 5
   thrustForce: 10
   bullet: {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
-  fireForce: 250
-  fireRate: 0.2
+  fireForce: 1000
+  fireRate: 0.15
   maxHealth: 100
   curHealth: 100
   healthImage: {fileID: 351393686}
@@ -3057,7 +3057,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1247688735}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5121b7abad3d3724386de0f0253bfb83, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3398,6 +3398,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWaves:
+  - waveName: FINAL
+    maxRound: -1
+    totalEnemyCount: 99999
+    currentEnemyKilledCount: 0
+    currentEnemySpawnedCount: 0
+    maxOnScreenEnemies: 99999
+    currentEnemiesOnScreen: 0
+    enemies:
+    - {fileID: 77468001574281361, guid: 690bce22fe38c6845bb0df5eae60d162, type: 3}
+    - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+    - {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
+    - {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+    - {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
+    healthMultiplier: 1
+    damageMultiplier: 1
   - waveName: 0-2
     maxRound: 2
     totalEnemyCount: 5
@@ -3419,17 +3434,6 @@ MonoBehaviour:
     enemies:
     - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
     - {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
-    healthMultiplier: 1
-    damageMultiplier: 1
-  - waveName: FINAL
-    maxRound: -1
-    totalEnemyCount: 5
-    currentEnemyKilledCount: 0
-    currentEnemySpawnedCount: 0
-    maxOnScreenEnemies: 2
-    currentEnemiesOnScreen: 0
-    enemies:
-    - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
     healthMultiplier: 1
     damageMultiplier: 1
   spawnPositions:
@@ -3944,7 +3948,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1716202281}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5121b7abad3d3724386de0f0253bfb83, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4123,7 +4127,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1752463484}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5121b7abad3d3724386de0f0253bfb83, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4336,7 +4340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816604682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,7 +4708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953686917}
   - component: {fileID: 1953686918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5030,7 +5034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085697979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

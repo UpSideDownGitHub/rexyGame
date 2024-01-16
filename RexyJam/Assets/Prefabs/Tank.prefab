@@ -106,11 +106,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 4
   angleOffset: 90
-  maxHealth: 100
-  curHealth: 100
+  maxHealth: 20
+  curHealth: 20
   projectileDamage: 25
-  touchDamage: 5
-  Score: 100
+  touchDamage: 1
+  Score: 300
   died: 0
   pickups:
   - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
