@@ -32389,6 +32389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeToBlack
       objectReference: {fileID: 0}
+    - target: {fileID: 3670836934865332510, guid: 1b585067f90cec743b266183a1358bd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7525928076711887368, guid: 1b585067f90cec743b266183a1358bd4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -32817,6 +32821,10 @@ PrefabInstance:
     - target: {fileID: 1447980150815046698, guid: c0a1c2b532d1c0e4eb79be68e15bd430, type: 3}
       propertyPath: m_Name
       value: FadeFromBlack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447980150815046698, guid: c0a1c2b532d1c0e4eb79be68e15bd430, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7396074104239129807, guid: c0a1c2b532d1c0e4eb79be68e15bd430, type: 3}
       propertyPath: m_Pivot.x
