@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6843bcedea7b5d14ebe7336db012d343
+guid: fdfe5f735f5e4454ba4d167e040d39b3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DroneSheet_0
+      name: Rocket_3
       rect:
         serializedVersion: 2
-        x: 291
-        y: 1483
-        width: 329
-        height: 330
+        x: 1022
+        y: 780
+        width: 286
+        height: 614
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,134 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6105ad49932eb947a9e4cb1f95fb207
-      internalID: 772996945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_1
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 736
-        width: 783
-        height: 812
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 360ed0e959ce8d143a79d4b7a79dacf9
-      internalID: 2023893327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_2
-      rect:
-        serializedVersion: 2
-        x: 1495
-        y: 1436
-        width: 329
-        height: 330
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9a993e97288b7d4288c65f03bcbae24
-      internalID: 1382915556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_3
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 366
-        width: 332
-        height: 333
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e8259bd0467f274dbda4c7fbcbde0e2
-      internalID: 1588413668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_4
-      rect:
-        serializedVersion: 2
-        x: 730
-        y: 325
-        width: 115
-        height: 225
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d6308155a326da428f3f13905e99d7f
-      internalID: -172183607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_5
-      rect:
-        serializedVersion: 2
-        x: 978
-        y: 154
-        width: 108
-        height: 391
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24aade8931bc61b4e9a4bf8a6d18c4ba
-      internalID: -975047943
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneSheet_6
-      rect:
-        serializedVersion: 2
-        x: 1451
-        y: 363
-        width: 332
-        height: 332
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2a78f57ab947f248b79724b376895ff
-      internalID: -1636604566
+      spriteID: 065c027926eb1a94580099f3cc10e055
+      internalID: 1051445727
       vertices: []
       indices: 
       edges: []
@@ -293,13 +167,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DroneSheet_0: 772996945
-      DroneSheet_1: 2023893327
-      DroneSheet_2: 1382915556
-      DroneSheet_3: 1588413668
-      DroneSheet_4: -172183607
-      DroneSheet_5: -975047943
-      DroneSheet_6: -1636604566
+      Rocket_0: 1362586432
+      Rocket_1: -1741269616
+      Rocket_2: -575633124
+      Rocket_3: 1051445727
+      Rocket_4: 241327037
+      Rocket_5: -1649671823
+      Rocket_6: -1140041109
+      Rocket_7: -1455093631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
