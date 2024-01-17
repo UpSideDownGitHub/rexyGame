@@ -50,12 +50,14 @@ public class LeaderboardManagement : MonoBehaviour
     public TMP_Text previousScoreText;
     public bool hasPrevious;
     public int previousScore;
+    public int score;
 
     private void Start()
     {
         LoadEntries();
         GetPersonalEntry();
         currentScore.text = PlayerPrefs.GetInt("Score", 0).ToString();
+        score = PlayerPrefs.GetInt("Score", 0);
     }
 
     void Update()
@@ -106,7 +108,7 @@ public class LeaderboardManagement : MonoBehaviour
             return;
         if (hasPrevious)
         {
-            if (previousScore > PlayerPrefs.GetInt("Score", 0))
+            if (previousScore > score)
                 return;
         }
         UploadEntry();
@@ -151,7 +153,6 @@ public class LeaderboardManagement : MonoBehaviour
     {
         //If you clear PlayerPrefs, you will be able to submit another score, now as a different player.
         // sneaky to clear player prefs, then set the assist after to save it
-        int score = PlayerPrefs.GetInt("Score", 100);
         Leaderboards.RexyGameJamLeaderboard.UploadNewEntry(currentName, score, isSuccessful =>
         {
             if (isSuccessful)

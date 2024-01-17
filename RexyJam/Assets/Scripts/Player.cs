@@ -35,11 +35,8 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float curHealth;
-    public Image healthImage;
 
     [Header("Score")]
-    public TMP_Text scoreText;
-    public TMP_Text multiplierText;
     public int score;
     public float multiplier;
     public float maxMultiplier;
@@ -95,19 +92,20 @@ public class Player : MonoBehaviour
     {
         multiplier = multiplier + 0.1f >= maxMultiplier ? maxMultiplier : multiplier + 0.1f;
         healthGaugeFunctions.SetMultiplierBulbs(true);
-        multiplierText.text = "x " + multiplier;
+        healthGaugeFunctions.SetMultiplierUI(multiplier);
     }
 
     public void IncreaseScore(int amount)
     {
         score += (int)(amount * multiplier);
-        scoreText.text = score + " Pts";
+        healthGaugeFunctions.SetScoreUI(score);
     }
 
     public void ResetMultiplier()
     {
-        multiplierText.text = "";
         multiplier = 1;
+        healthGaugeFunctions.SetMultiplierBulbs(false);
+        healthGaugeFunctions.SetMultiplierUI(multiplier);
     }
 
     public void TakeDamage(float damage)
@@ -117,8 +115,7 @@ public class Player : MonoBehaviour
             ResetMultiplier();
             curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-            healthGaugeFunctions.SetMultiplierBulbs(false);
-            healthImage.fillAmount = curHealth / maxHealth;
+            
             if (curHealth == 0)
             {
                 PlayerPrefs.SetInt("Score", score);
@@ -232,7 +229,6 @@ public class Player : MonoBehaviour
         {
             curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-            healthImage.fillAmount = curHealth / maxHealth;
         }
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;
