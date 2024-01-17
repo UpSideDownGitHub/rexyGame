@@ -15,6 +15,7 @@ public class LeaderboardManagement : MonoBehaviour
     public string currentName;
     public TMP_Text[] letters;
     public GameObject[] selectionIndicators;
+    public TMP_Text currentScore;
 
     public float rotationSpeed;
     private float _lookVec;
@@ -54,6 +55,7 @@ public class LeaderboardManagement : MonoBehaviour
     {
         LoadEntries();
         GetPersonalEntry();
+        currentScore.text = PlayerPrefs.GetInt("Score", 0).ToString();
     }
 
     void Update()
