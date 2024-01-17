@@ -49,13 +49,13 @@ public class Player : MonoBehaviour
     [Header("Powerups")]
     /*
      * 0 => Health
-     * 1 => Implosion 
-     * 2 => Triple Shot 
-     * 3 => Circle Shot
-     * 4 => Peirce Shot
-     * 5 => Ricochet Shot
-     * 6 => Super Fire
-     * 7 => minion
+     * 1 => Implosion - green
+     * 2 => Triple Shot - pink
+     * 3 => Circle Shot - blue
+     * 4 => Peirce Shot - light blue
+     * 5 => Ricochet Shot - yellow
+     * 6 => Super Fire - orange
+     * 7 => minion - red
     */
     public PowerupInfo[] powerups;
     public float implosionDamage;
