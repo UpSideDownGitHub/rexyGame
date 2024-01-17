@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 [Serializable]
 public struct PowerupInfo
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject player;
     public GameObject gun;
-    public GameObject[] firePoint;
+    public GameObject firePoint;
 
     [Header("Movement")]
     public float rotationSpeed;
@@ -48,15 +49,22 @@ public class Player : MonoBehaviour
 
     [Header("Powerups")]
     /*
-     * 0 => Sheild 
-     * 0 => Triple Shot 
-     * 0 => Implosion 
-     * 0 => Disable Movement 
+     * 0 => Health
+     * 1 => Implosion 
+     * 2 => Triple Shot 
+     * 3 => Circle Shot
+     * 4 => Bounce Shot
+     * 5 => Peirce Shot
+     * 6 => Ricochet Shot
+     * 7 => Super Fire
     */
     public PowerupInfo[] powerups;
     public float implosionDamage;
     public float implosionArea;
     public float healthIncreaseAmount;
+    public float tripleShotAngle;
+    public float circleBulletCount;
+    public float superFireRate;
 
     [Header("UI")]
     public HealthGaugeFunctions healthGaugeFunctions;
@@ -138,17 +146,17 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        // powerups
-        for (int i = 0; i < powerups.Length; i++)
-        {
-            if (powerups[i].enabled)
-            {
-                if (Time.time > powerups[i].timeToDisable)
-                {
-                    powerups[i].enabled = false;
-                }
-            }
-        }
+        //// powerups
+        //for (int i = 0; i < powerups.Length; i++)
+        //{
+        //    if (powerups[i].enabled)
+        //    {
+        //        if (Time.time > powerups[i].timeToDisable)
+        //        {
+        //            powerups[i].enabled = false;
+        //        }
+        //    }
+        //}
 
         // I Frames
         if (Time.time > _timeToDisableIFrame && iFrameActive)
@@ -194,30 +202,44 @@ public class Player : MonoBehaviour
 
         if (_fire && Time.time > _timeOfNextFire)
         {
-            if (powerups[1].enabled)
-            {
+            if (powerups[7].enabled) // Super Shot
+                _timeOfNextFire = Time.time + superFireRate;
+            else
                 _timeOfNextFire = Time.time + fireRate;
-                for (int i = 0; i < firePoint.Length; i++)
-                {
-                    var rot = Quaternion.Euler(firePoint[i].transform.rotation.eulerAngles.x,
-                        firePoint[i].transform.rotation.eulerAngles.y,
-                        firePoint[i].transform.rotation.eulerAngles.z + 90);
-                    var tempBullet = Instantiate(bullet, firePoint[i].transform.position, rot);
-                    tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                    tempBullet.GetComponent<PlayerBullet>().player = this;
-                }
 
+            if (powerups[3].enabled) // circle
+            {
+                // spawn the bullets in a circle around
+                for (int i = 0; i < circleBulletCount; i++)
+                {
+                    var addedRot = 360 / circleBulletCount * i;
+                    SpawnBullet(Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90 + addedRot));
+                }
             }
             else
             {
-                _timeOfNextFire = Time.time + fireRate;
-                var rot = Quaternion.Euler(firePoint[0].transform.rotation.eulerAngles.x,
-                    firePoint[0].transform.rotation.eulerAngles.y,
-                    firePoint[0].transform.rotation.eulerAngles.z + 90);
-                var tempBullet = Instantiate(bullet, firePoint[0].transform.position, rot);
-                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                tempBullet.GetComponent<PlayerBullet>().player = this;
+                SpawnBullet(Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90));
             }
+        }
+    }
+
+    public void SpawnBullet(Quaternion rot)
+    {
+        if (powerups[2].enabled) // Triple Shot
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                var newRot = Quaternion.Euler(rot.eulerAngles.x, rot.eulerAngles.y, rot.eulerAngles.z + i * tripleShotAngle);
+                var tempBullet = Instantiate(bullet, firePoint.transform.position, newRot);
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<PlayerBullet>().SetValues(powerups[4].enabled, powerups[5].enabled, powerups[6].enabled, this, fireForce);
+            }
+        }
+        else
+        {
+            var tempBullet = Instantiate(bullet, firePoint.transform.position, rot);
+            tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+            tempBullet.GetComponent<PlayerBullet>().SetValues(powerups[4].enabled, powerups[5].enabled, powerups[6].enabled, this, fireForce);
         }
     }
 

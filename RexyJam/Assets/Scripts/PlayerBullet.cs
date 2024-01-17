@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlayerBullet : MonoBehaviour
 {
@@ -15,9 +13,26 @@ public class PlayerBullet : MonoBehaviour
     [Header("Score")]
     public Player player;
 
+    [Header("Powerups")]
+    public bool bounce;
+    public bool peirce;
+    public bool ricochet;
+    public float ricochetSearchRadius;
+    public float angleOffset = 90;
+    public float redirectForce;
+
+    public void SetValues(bool bounce, bool peirce, bool ricochet, Player player, float redirectForce)
+    {
+        this.bounce = bounce;
+        this.peirce = peirce;
+        this.ricochet = ricochet;
+        this.player = player;
+        this.redirectForce = redirectForce;
+    }
+
     public void Start()
     {
-        Destroy(gameObject, timeAlive);
+        Invoke("customDestroy", timeAlive);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -28,11 +43,55 @@ public class PlayerBullet : MonoBehaviour
             enemy.TakeDamage(damage);
             player.IncreaseMultiplier();
             player.IncreaseScore(enemy.Score);
-            Destroy(gameObject);
+
+            if (ricochet)
+                Ricochet();
+            else if (!peirce)
+                Destroy(gameObject);
         }
         else if (collision.CompareTag("BulletDeath"))
         {
-            Destroy(gameObject);
+            if (bounce)
+            {
+                // Random Bounce
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x * Random.value > 0.5 ? -1 : 1, 
+                    GetComponent<Rigidbody2D>().velocity.y * Random.value > 0.5 ? -1 : 1);
+            }
+            else
+                Destroy(gameObject);
         }
+    }
+
+
+    public void Ricochet()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, ricochetSearchRadius);
+        float closest = float.MaxValue;
+        GameObject closestObject = null;
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            var dist = Vector2.Distance(transform.position, enemies[i].transform.position);
+            if (dist < closest)
+            {
+                closest = dist;
+                closestObject = enemies[i].gameObject;
+            }
+        }
+        if (closestObject != null)
+        {
+            var dir2 = transform.position - closestObject.transform.position;
+            var angle = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg + angleOffset;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            var rb = GetComponent<Rigidbody2D>();
+            rb.angularVelocity = 0;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(transform.right * redirectForce);
+        }
+    }
+
+    public void customDestroy()
+    {
+        // apply powerups if they are active
+        Destroy(gameObject);
     }
 }

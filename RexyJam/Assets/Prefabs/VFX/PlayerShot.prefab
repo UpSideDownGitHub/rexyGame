@@ -196,14 +196,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   timeAlive: 5
-  assist: 0
-  assistArea: 20
-  viewAngle: 50
-  closestEnemy: {fileID: 0}
-  rb: {fileID: 3168322967136468444}
-  turnSpeed: 100
-  movmentSpeed: 50
   player: {fileID: 0}
+  bounce: 0
+  peirce: 0
+  ricochet: 0
+  ricochetSearchRadius: 10
+  angleOffset: -90
+  redirectForce: 0
+  implode: 0
 --- !u!1 &7428192221929879201
 GameObject:
   m_ObjectHideFlags: 0

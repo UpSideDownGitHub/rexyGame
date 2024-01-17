@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5696903777817704930}
   - component: {fileID: 2186176208072594299}
   - component: {fileID: 2386841380601048856}
-  m_Layer: 6
-  m_Name: Tank
+  m_Layer: 9
+  m_Name: Sniper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 803c30ec50b0982408b303ab0b666e11, type: 3}
-  m_Color: {r: 1, g: 0.9606118, b: 0, a: 1}
+  m_Color: {r: 0.10233021, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,34 +104,34 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 2186176208072594299}
   rb: {fileID: 0}
-  type: 4
+  type: 1
   angleOffset: 90
-  maxHealth: 20
-  curHealth: 20
-  projectileDamage: 25
-  touchDamage: 1
-  Score: 300
+  maxHealth: 8
+  curHealth: 8
+  projectileDamage: 10
+  touchDamage: 25
+  Score: 150
   died: 0
   pickups:
-  - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
-  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
-  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
   - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
+  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  powerupDropChance: 0.5
   firePoint: {fileID: 3240121775749491104}
-  bullet: {fileID: 5570516521812618644, guid: 988f41f30c7ca964fbb3482c6ffe152f, type: 3}
-  machineGunBullet: {fileID: 4261331493483963901, guid: 033f5ef5a4584f24681e2a393e86931f, type: 3}
+  bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
+  machineGunBullet: {fileID: 0}
   fireForce: 500
   attackTime: 2
-  attackTimeMachineGun: 0.36
+  attackTimeMachineGun: 0
   movmentSpeed: 0
   turnSpeed: 0
-  stoppingDistance: 3
-  minAttackDistance: 0
-  maxAttackDistance: 0
-  distanceToRetreat: 5
-  retreatSpeed: 0
-  suicideDistance: 0
-  rotationSpeed: 0
+  stoppingDistance: 6
+  minAttackDistance: 4
+  maxAttackDistance: 7
+  distanceToRetreat: 4
+  retreatSpeed: 5
+  suicideDistance: 1.5
+  rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
   distance: 0
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6744845069728553512}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5234950419688159839}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Follow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

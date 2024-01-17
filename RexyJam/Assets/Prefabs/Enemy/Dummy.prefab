@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3791411190669491303}
   - component: {fileID: 5366419375596828313}
   - component: {fileID: 5696903777817704930}
+  - component: {fileID: 1343971226207928041}
   - component: {fileID: 2386841380601048856}
-  - component: {fileID: 5377860181103253604}
   m_Layer: 6
-  m_Name: Bug
+  m_Name: Dummy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4459fff084dd84526ab8fd5082d2eacb, type: 2}
+  - {fileID: 2100000, guid: 1f41a1c32b5a746468d5009b0aa6b22d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 803c30ec50b0982408b303ab0b666e11, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,40 +103,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   agent: {fileID: 0}
-  rb: {fileID: 5377860181103253604}
+  rb: {fileID: 1343971226207928041}
   type: 2
   angleOffset: 90
   maxHealth: 1
   curHealth: 1
   projectileDamage: 0
-  touchDamage: 5
-  Score: 50
+  touchDamage: 0
+  Score: 100
   died: 0
   pickups:
-  - {fileID: 7237632045612705188, guid: 56b0f21f95e4a3f4a8d3ee39b98f54e7, type: 3}
-  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
-  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
   - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
+  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  powerupDropChance: 0.5
   firePoint: {fileID: 3240121775749491104}
-  bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
-  machineGunBullet: {fileID: 0}
-  fireForce: 500
-  attackTime: 2
+  bullet: {fileID: 5570516521812618644, guid: 988f41f30c7ca964fbb3482c6ffe152f, type: 3}
+  machineGunBullet: {fileID: 4261331493483963901, guid: 033f5ef5a4584f24681e2a393e86931f, type: 3}
+  fireForce: 0
+  attackTime: 0
   attackTimeMachineGun: 0
-  movmentSpeed: 5
-  turnSpeed: 5
-  stoppingDistance: 6
-  minAttackDistance: 5
-  maxAttackDistance: 7
-  distanceToRetreat: 4
-  retreatSpeed: 5
+  movmentSpeed: 0
+  turnSpeed: 0
+  stoppingDistance: 3
+  minAttackDistance: 0
+  maxAttackDistance: 0
+  distanceToRetreat: 5
+  retreatSpeed: 0
   suicideDistance: 0
-  rotationSpeed: 90
+  rotationSpeed: 0
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
   distance: 0
   distanceDecreaseTime: 0
   distanceDecreaseAmount: 0
+--- !u!50 &1343971226207928041
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77468001574281361}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &2386841380601048856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,33 +209,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &5377860181103253604
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77468001574281361}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &3240121775749491104
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3240121775749491104}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
