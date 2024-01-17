@@ -316,8 +316,13 @@ public class Player : MonoBehaviour
 
     public void SetpowerUp(int powerupID)
     {
-        healthGaugeFunctions.SetPowerUpUI(powerupID, true);
-        if (powerupID == 1) // implosion
+        if (powerupID == 0)
+        {
+            curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
+            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+            return;
+        }
+        else if (powerupID == 1) // implosion
         {
             // spawn implosion effect
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, implosionArea);
@@ -326,17 +331,12 @@ public class Player : MonoBehaviour
                 if (enemies[i].CompareTag("Enemy"))
                     enemies[i].GetComponent<Enemy>().TakeDamage(implosionDamage);
             }
-            return;
-        }
-        else if (powerupID == 0)
-        {
-            curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
-            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
         }
         else if (powerupID == 7)
         {
             minion.SetActive(true);
         }
+        healthGaugeFunctions.SetPowerUpUI(powerupID, true);
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;
     }

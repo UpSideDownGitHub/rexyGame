@@ -174,7 +174,7 @@ public class Enemy : MonoBehaviour
                     collision.gameObject.GetComponent<Player>().TakeDamage(touchDamage);
                     // PLAY BUG DEATH SOUND HERE
                     // SPAWN BUG DEATH PARTICLE HERE
-                    Destroy(gameObject);
+                    TakeDamage(9999);
                     break;
                 case EnemyType.DRONE:
                     // DO NOTHING
@@ -183,7 +183,7 @@ public class Enemy : MonoBehaviour
                     collision.gameObject.GetComponent<Player>().TakeDamage(touchDamage);
                     // PLAY BUG DEATH SOUND HERE
                     // SPAWN BUG DEATH PARTICLE HERE
-                    Destroy(gameObject);
+                    TakeDamage(9999);
                     break;
                 case EnemyType.SNIPER:
                     // DO NOTHING
@@ -245,7 +245,7 @@ public class Enemy : MonoBehaviour
         {
             // SPAWN EXPLOSION PARTICLE
             target.GetComponent<Player>().TakeDamage(touchDamage);
-            Destroy(gameObject);
+            TakeDamage(9999);
         }
         else if (distance < distanceToRetreat)
         {
