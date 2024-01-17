@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -121,6 +122,7 @@ public class Player : MonoBehaviour
             if (curHealth == 0)
             {
                 PlayerPrefs.SetInt("Score", score);
+                SceneManager.LoadSceneAsync("EndScreen");
             }
         }
     }

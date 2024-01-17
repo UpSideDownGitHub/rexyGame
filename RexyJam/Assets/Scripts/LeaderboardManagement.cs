@@ -38,15 +38,22 @@ public class LeaderboardManagement : MonoBehaviour
         if (ctx.action.WasPerformedThisFrame())
             SelectPressed();
     }
+    public void OnSelect2(InputAction.CallbackContext ctx)
+    {
+        if (ctx.action.WasPerformedThisFrame())
+            MainMenuPressed();
+    }
 
     [Header("Leaderboard")]
-    public TMP_Text[] entryTextObjects;
+    public TMP_Text[] playerInfo;
     public TMP_Text previousScoreText;
-    public TMP_InputField usernameInputField;
+    public bool hasPrevious;
+    public int previousScore;
 
     private void Start()
     {
         LoadEntries();
+        GetPersonalEntry();
     }
 
     void Update()
@@ -85,11 +92,22 @@ public class LeaderboardManagement : MonoBehaviour
         return;
     }
 
+    public void MainMenuPressed()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+
     public void ContinuePressed()
     {
-        // save the score to the leaderboard with the name being sent
+        // dont upload if not higher or no name
         if (currentName.Equals(""))
             return;
+        if (hasPrevious)
+        {
+            if (previousScore > PlayerPrefs.GetInt("Score", 0))
+                return;
+        }
+        UploadEntry();
     }
 
     public void SelectPressed()
@@ -120,11 +138,11 @@ public class LeaderboardManagement : MonoBehaviour
     {
         Leaderboards.RexyGameJamLeaderboard.GetEntries(entries =>
         {
-            foreach (var t in entryTextObjects)
+            foreach (var t in playerInfo)
                 t.text = "";
-            var length = Mathf.Min(entryTextObjects.Length, entries.Length);
+            var length = Mathf.Min(playerInfo.Length, entries.Length);
             for (int i = 0; i < length; i++)
-                entryTextObjects[i].text = $"{entries[i].Rank}. {entries[i].Username} - {entries[i].Score}";
+                playerInfo[i].text = $"{entries[i].Rank}. {entries[i].Username} - {entries[i].Score}";
         });
     }
     public void UploadEntry()
@@ -132,7 +150,7 @@ public class LeaderboardManagement : MonoBehaviour
         //If you clear PlayerPrefs, you will be able to submit another score, now as a different player.
         // sneaky to clear player prefs, then set the assist after to save it
         int score = PlayerPrefs.GetInt("Score", 100);
-        Leaderboards.RexyGameJamLeaderboard.UploadNewEntry(usernameInputField.text, score, isSuccessful =>
+        Leaderboards.RexyGameJamLeaderboard.UploadNewEntry(currentName, score, isSuccessful =>
         {
             if (isSuccessful)
                 LoadEntries();
@@ -140,5 +158,29 @@ public class LeaderboardManagement : MonoBehaviour
         {
             print("Error Uploading");
         });
+    }
+
+    public void GetPersonalEntry()
+    {
+        Leaderboards.RexyGameJamLeaderboard.GetPersonalEntry(OnPersonalEntryLoaded, errored =>
+        {
+            print("Error getting peronal");
+        });
+    }
+
+    private void OnPersonalEntryLoaded(Entry entry)
+    {
+        if (!entry.Username.Equals("Unknown"))
+        {
+            hasPrevious = true;
+            previousScore = entry.Score;
+            previousScoreText.text = $"{entry.RankSuffix()}. {entry.Username} : {entry.Score}";
+        }
+        else
+        {
+            hasPrevious = false;
+            previousScoreText.text = "No Previous";
+        }
+        
     }
 }
