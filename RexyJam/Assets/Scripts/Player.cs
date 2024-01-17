@@ -137,21 +137,18 @@ public class Player : MonoBehaviour
         if (iFrameActive)
             return;
 
-        if (!powerups[0].enabled)
+        ResetMultiplier();
+        curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
+        healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+
+        iFrameActive = true;
+        _timeToDisableIFrame = Time.time + iFrameTime;
+
+
+        if (curHealth == 0)
         {
-            ResetMultiplier();
-            curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
-            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-
-            iFrameActive = true;
-            _timeToDisableIFrame = Time.time + iFrameTime;
-
-
-            if (curHealth == 0)
-            {
-                PlayerPrefs.SetInt("Score", score);
-                SceneManager.LoadSceneAsync("EndScreen");
-            }
+            PlayerPrefs.SetInt("Score", score);
+            SceneManager.LoadSceneAsync("EndScreen");
         }
     }
 
@@ -165,6 +162,7 @@ public class Player : MonoBehaviour
                 if (Time.time > powerups[i].timeToDisable)
                 {
                     powerups[i].enabled = false;
+                    healthGaugeFunctions.SetPowerUpUI(i, false);
                 }
             }
         }
@@ -318,7 +316,7 @@ public class Player : MonoBehaviour
 
     public void SetpowerUp(int powerupID)
     {
-        
+        healthGaugeFunctions.SetPowerUpUI(powerupID, true);
         if (powerupID == 1) // implosion
         {
             // spawn implosion effect
