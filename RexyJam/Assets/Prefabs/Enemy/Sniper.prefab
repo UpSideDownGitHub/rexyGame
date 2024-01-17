@@ -80,10 +80,10 @@ MonoBehaviour:
   attackTimeMachineGun: 0
   movmentSpeed: 0
   turnSpeed: 0
-  stoppingDistance: 6
-  minAttackDistance: 4
-  maxAttackDistance: 7
-  distanceToRetreat: 4
+  stoppingDistance: 7
+  minAttackDistance: 5
+  maxAttackDistance: 8
+  distanceToRetreat: 5
   retreatSpeed: 5
   suicideDistance: 1.5
   laserSight: {fileID: 6483049236496980150}
@@ -108,7 +108,7 @@ NavMeshAgent:
   m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 5
-  m_StoppingDistance: 6
+  m_StoppingDistance: 7
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
