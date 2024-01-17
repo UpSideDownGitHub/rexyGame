@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float curHealth;
 
+    [Header("I Frames")]
+    public bool iFrameActive;
+    public float iFrameTime;
+    private float _timeToDisableIFrame;
+
     [Header("Score")]
     public int score;
     public float multiplier;
@@ -110,12 +115,19 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (iFrameActive)
+            return;
+
         if (!powerups[0].enabled)
         {
             ResetMultiplier();
             curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-            
+
+            iFrameActive = true;
+            _timeToDisableIFrame = Time.time + iFrameTime;
+
+
             if (curHealth == 0)
             {
                 PlayerPrefs.SetInt("Score", score);
@@ -136,6 +148,12 @@ public class Player : MonoBehaviour
                     powerups[i].enabled = false;
                 }
             }
+        }
+
+        // I Frames
+        if (Time.time > _timeToDisableIFrame && iFrameActive)
+        {
+            iFrameActive = false;
         }
 
         // movement

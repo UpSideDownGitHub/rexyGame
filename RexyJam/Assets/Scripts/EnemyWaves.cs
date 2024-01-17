@@ -9,6 +9,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
+[Serializable]
+public struct EnemyInfo
+{
+    public string enemyName;
+    public GameObject enemyObject;
+    [Range(0f, 1f)] public float SpawnChance;
+}
 [Serializable]
 public struct EnemyWave
 {
@@ -19,10 +27,11 @@ public struct EnemyWave
     public int currentEnemySpawnedCount;
     public int maxOnScreenEnemies;
     public int currentEnemiesOnScreen;
-    public GameObject[] enemies;
+    public EnemyInfo[] enemies;
     public float healthMultiplier;
     public float damageMultiplier;
 }
+
 
 public class EnemyWaves : MonoBehaviour
 {
@@ -31,7 +40,8 @@ public class EnemyWaves : MonoBehaviour
     public int currentWaveInfo;
     public int currentWave;
 
-    public float enemySpawnRate;
+    public float minEnemySpawnRate;
+    public float maxEnemySpawnRate;
     private float _timeOfNextEnemySpawn;
 
 
@@ -63,7 +73,7 @@ public class EnemyWaves : MonoBehaviour
         }
         if (Time.time > _timeOfNextEnemySpawn)
         {
-            _timeOfNextEnemySpawn = Time.time + enemySpawnRate;
+            _timeOfNextEnemySpawn = Time.time + Random.Range(minEnemySpawnRate, maxEnemySpawnRate);
 
             // check for end of wave
             if (enemyWaves[currentWaveInfo].currentEnemyKilledCount >= enemyWaves[currentWaveInfo].totalEnemyCount)
@@ -97,9 +107,28 @@ public class EnemyWaves : MonoBehaviour
             if (enemyWaves[currentWaveInfo].currentEnemiesOnScreen < enemyWaves[currentWaveInfo].maxOnScreenEnemies &&
                 enemyWaves[currentWaveInfo].currentEnemySpawnedCount < enemyWaves[currentWaveInfo].totalEnemyCount)
             {
-                // spawn random enemy from enemies in wave and give random spawn pos
-                var tempEnemy = Instantiate(enemyWaves[currentWaveInfo].enemies[Random.Range(0, enemyWaves[currentWaveInfo].enemies.Length)],
-                    spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, quaternion.identity);
+                //// spawn random enemy from enemies in wave and give random spawn pos
+                float ran = Random.value;
+                GameObject tempEnemy = null;
+                for (int i = 0; i < enemyWaves[currentWaveInfo].enemies.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        if (ran <= enemyWaves[currentWaveInfo].enemies[i].SpawnChance)
+                        {
+                            tempEnemy = Instantiate(enemyWaves[currentWaveInfo].enemies[i].enemyObject,
+                                spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, quaternion.identity);
+                        }
+                    }
+                    else if (ran > enemyWaves[currentWaveInfo].enemies[i - 1].SpawnChance &&
+                        ran <= enemyWaves[currentWaveInfo].enemies[i].SpawnChance)
+                    {
+                        tempEnemy = Instantiate(enemyWaves[currentWaveInfo].enemies[i].enemyObject,
+                            spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, quaternion.identity);
+                    }
+
+                }
+                 
                 // set multipliers
                 tempEnemy.GetComponent<Enemy>().SetMultipliers(enemyWaves[currentWaveInfo].healthMultiplier,
                     enemyWaves[currentWaveInfo].damageMultiplier);

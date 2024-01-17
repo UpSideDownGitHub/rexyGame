@@ -30,5 +30,9 @@ public class PlayerBullet : MonoBehaviour
             player.IncreaseScore(enemy.Score);
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("BulletDeath"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

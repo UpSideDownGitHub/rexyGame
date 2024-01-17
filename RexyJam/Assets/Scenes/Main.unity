@@ -513,6 +513,7 @@ Transform:
   - {fileID: 1752463485}
   - {fileID: 1597390904}
   - {fileID: 1716202282}
+  - {fileID: 285846844}
   - {fileID: 357876386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -792,6 +793,126 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 803c30ec50b0982408b303ab0b666e11, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &285846843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 285846844}
+  - component: {fileID: 285846846}
+  - component: {fileID: 285846845}
+  m_Layer: 7
+  m_Name: Wall Down Bulge
+  m_TagString: BulletDeath
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &285846844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285846843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208975685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &285846845
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285846843}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 5121b7abad3d3724386de0f0253bfb83, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.6
+--- !u!212 &285846846
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285846843}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1580,7 +1701,7 @@ GameObject:
   - component: {fileID: 603474867}
   m_Layer: 7
   m_Name: Wall Right
-  m_TagString: Untagged
+  m_TagString: BulletDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3157,6 +3278,8 @@ MonoBehaviour:
   fireRate: 0.15
   maxHealth: 100
   curHealth: 100
+  iFrameActive: 0
+  iFrameTime: 0
   score: 0
   multiplier: 1
   maxMultiplier: 10
@@ -3476,7 +3599,7 @@ GameObject:
   - component: {fileID: 1247688738}
   m_Layer: 7
   m_Name: Wall Left
-  m_TagString: Untagged
+  m_TagString: BulletDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4083,38 +4206,125 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWaves:
-  - waveName: 0-2
-    maxRound: 2
+  - waveName: 0-1
+    maxRound: 1
     totalEnemyCount: 5
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
     maxOnScreenEnemies: 2
     currentEnemiesOnScreen: 0
     enemies:
-    - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+    - enemyName: Drone - 100
+      enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+      SpawnChance: 1
     healthMultiplier: 1
     damageMultiplier: 1
-  - waveName: 3-5
-    maxRound: 5
-    totalEnemyCount: 10
+  - waveName: 2-3
+    maxRound: 3
+    totalEnemyCount: 5
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
-    maxOnScreenEnemies: 3
+    maxOnScreenEnemies: 2
     currentEnemiesOnScreen: 0
     enemies:
-    - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
-    - {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+    - enemyName: Bug - 50
+      enemyObject: {fileID: 77468001574281361, guid: 690bce22fe38c6845bb0df5eae60d162, type: 3}
+      SpawnChance: 0.5
+    - enemyName: Kamakarzi - 50
+      enemyObject: {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
+      SpawnChance: 1
     healthMultiplier: 1
     damageMultiplier: 1
-  - waveName: FINAL
-    maxRound: -1
-    totalEnemyCount: 99999
+  - waveName: 3-4
+    maxRound: 4
+    totalEnemyCount: 25
+    currentEnemyKilledCount: 0
+    currentEnemySpawnedCount: 0
+    maxOnScreenEnemies: 5
+    currentEnemiesOnScreen: 0
+    enemies:
+    - enemyName: bug - 50
+      enemyObject: {fileID: 77468001574281361, guid: 690bce22fe38c6845bb0df5eae60d162, type: 3}
+      SpawnChance: 0.5
+    - enemyName: kama - 25
+      enemyObject: {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
+      SpawnChance: 0.75
+    - enemyName: Drone - 25
+      enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+      SpawnChance: 1
+    healthMultiplier: 1
+    damageMultiplier: 1
+  - waveName: 5
+    maxRound: 5
+    totalEnemyCount: 5
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
     maxOnScreenEnemies: 1
     currentEnemiesOnScreen: 0
     enemies:
-    - {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+    - enemyName: Sniper - 100
+      enemyObject: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      SpawnChance: 1
+    healthMultiplier: 1
+    damageMultiplier: 1
+  - waveName: 6-7
+    maxRound: 7
+    totalEnemyCount: 50
+    currentEnemyKilledCount: 0
+    currentEnemySpawnedCount: 0
+    maxOnScreenEnemies: 5
+    currentEnemiesOnScreen: 0
+    enemies:
+    - enemyName: Bug - 40
+      enemyObject: {fileID: 77468001574281361, guid: 690bce22fe38c6845bb0df5eae60d162, type: 3}
+      SpawnChance: 0.4
+    - enemyName: Kama - 30
+      enemyObject: {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
+      SpawnChance: 0.7
+    - enemyName: Drone - 20
+      enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+      SpawnChance: 0.9
+    - enemyName: Sniper - 10
+      enemyObject: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      SpawnChance: 1
+    healthMultiplier: 1
+    damageMultiplier: 1
+  - waveName: 8
+    maxRound: 8
+    totalEnemyCount: 5
+    currentEnemyKilledCount: 0
+    currentEnemySpawnedCount: 0
+    maxOnScreenEnemies: 1
+    currentEnemiesOnScreen: 0
+    enemies:
+    - enemyName: tank - 100
+      enemyObject: {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
+      SpawnChance: 1
+    healthMultiplier: 1
+    damageMultiplier: 1
+  - waveName: FINAL
+    maxRound: -1
+    totalEnemyCount: 100
+    currentEnemyKilledCount: 0
+    currentEnemySpawnedCount: 0
+    maxOnScreenEnemies: 10
+    currentEnemiesOnScreen: 0
+    enemies:
+    - enemyName: Bug - 30
+      enemyObject: {fileID: 77468001574281361, guid: 690bce22fe38c6845bb0df5eae60d162, type: 3}
+      SpawnChance: 0.3
+    - enemyName: Kama - 30
+      enemyObject: {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
+      SpawnChance: 0.6
+    - enemyName: Drone - 20
+      enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
+      SpawnChance: 0.8
+    - enemyName: Sniper - 10
+      enemyObject: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      SpawnChance: 0.9
+    - enemyName: Tank - 10
+      enemyObject: {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
+      SpawnChance: 1
     healthMultiplier: 1
     damageMultiplier: 1
   spawnPositions:
@@ -4140,7 +4350,8 @@ MonoBehaviour:
   - {fileID: 1854132884}
   currentWaveInfo: 0
   currentWave: 0
-  enemySpawnRate: 0.5
+  minEnemySpawnRate: 0.1
+  maxEnemySpawnRate: 1
   waveNumber: {fileID: 621754489}
   showWaveNumber: 1
   showWaveNumberTime: 2
@@ -4869,7 +5080,7 @@ GameObject:
   - component: {fileID: 1716202284}
   m_Layer: 7
   m_Name: Wall Down
-  m_TagString: Untagged
+  m_TagString: BulletDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4883,7 +5094,7 @@ Transform:
   m_GameObject: {fileID: 1716202281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.49, z: 0}
+  m_LocalPosition: {x: 0, y: -4.34, z: 0}
   m_LocalScale: {x: 18.835, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5085,7 +5296,7 @@ GameObject:
   - component: {fileID: 1752463487}
   m_Layer: 7
   m_Name: Wall Up
-  m_TagString: Untagged
+  m_TagString: BulletDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

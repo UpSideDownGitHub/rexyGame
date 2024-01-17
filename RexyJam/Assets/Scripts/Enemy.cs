@@ -182,7 +182,7 @@ public class Enemy : MonoBehaviour
             }
         }
         else if (collision.gameObject.CompareTag("EnemyDeath"))
-            Destroy(gameObject);
+            TakeDamage(9999);
     }
 
     public void Bug()
