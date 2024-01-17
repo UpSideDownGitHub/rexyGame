@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MultiplierMonitor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_Text multiplierText;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject resetScreen;
+
+    public IEnumerator resetAnimations()
     {
-        
+        yield return new WaitForSeconds(0.5f);
     }
 }
