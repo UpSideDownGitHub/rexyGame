@@ -26,12 +26,20 @@ public class HealthGaugeFunctions : MonoBehaviour
     [Header("Score UI")]
     public TMP_Text[] scoreBulbs;
 
+    [Header("PowerupUI")]
+    public GameObject[] powerupGlows;
+
     [Header("Muliplier UI")]
     public TMP_Text multiplierBulbsText;
 
     public void SetMultiplierUI(float multiplier)
     {
         // TO BE IMPLEMENTED
+    }
+
+    public void SetPowerUpUI(int ID, bool toggle)
+    {
+        powerupGlows[ID-1].SetActive(toggle);
     }
 
     public void SetScoreUI(int score)

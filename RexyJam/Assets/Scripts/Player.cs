@@ -49,13 +49,13 @@ public class Player : MonoBehaviour
     [Header("Powerups")]
     /*
      * 0 => Health
-     * 1 => Implosion 
-     * 2 => Triple Shot 
-     * 3 => Circle Shot
-     * 4 => Peirce Shot
-     * 5 => Ricochet Shot
-     * 6 => Super Fire
-     * 7 => minion
+     * 1 => Implosion - green
+     * 2 => Triple Shot - pink
+     * 3 => Circle Shot - blue
+     * 4 => Peirce Shot - light blue
+     * 5 => Ricochet Shot - yellow
+     * 6 => Super Fire - orange
+     * 7 => minion - red
     */
     public PowerupInfo[] powerups;
     public float implosionDamage;
@@ -73,6 +73,10 @@ public class Player : MonoBehaviour
     public HealthGaugeFunctions healthGaugeFunctions;
 
     ProjectilePool projPool;
+
+    [Header("Thruster Effect")]
+    public GameObject thrusterOn;
+    public GameObject thrusterOff;
 
     // INPUT
     private float _lookVecRex;
@@ -133,37 +137,35 @@ public class Player : MonoBehaviour
         if (iFrameActive)
             return;
 
-        if (!powerups[0].enabled)
+        ResetMultiplier();
+        curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
+        healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+
+        iFrameActive = true;
+        _timeToDisableIFrame = Time.time + iFrameTime;
+
+
+        if (curHealth == 0)
         {
-            ResetMultiplier();
-            curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
-            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-
-            iFrameActive = true;
-            _timeToDisableIFrame = Time.time + iFrameTime;
-
-
-            if (curHealth == 0)
-            {
-                PlayerPrefs.SetInt("Score", score);
-                SceneManager.LoadSceneAsync("EndScreen");
-            }
+            PlayerPrefs.SetInt("Score", score);
+            SceneManager.LoadSceneAsync("EndScreen");
         }
     }
 
     public void Update()
     {
         // powerups
-        //for (int i = 0; i < powerups.Length; i++)
-        //{
-        //    if (powerups[i].enabled)
-        //    {
-        //        if (Time.time > powerups[i].timeToDisable)
-        //        {
-        //            powerups[i].enabled = false;
-        //        }
-        //    }
-        //}
+        for (int i = 0; i < powerups.Length; i++)
+        {
+            if (powerups[i].enabled)
+            {
+                if (Time.time > powerups[i].timeToDisable)
+                {
+                    powerups[i].enabled = false;
+                    healthGaugeFunctions.SetPowerUpUI(i, false);
+                }
+            }
+        }
 
         // I Frames
         if (Time.time > _timeToDisableIFrame && iFrameActive)
@@ -218,7 +220,16 @@ public class Player : MonoBehaviour
 
 
         if (_thrust)
+        {
+            thrusterOn.SetActive(true);
+            thrusterOff.SetActive(false);
             rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
+        }
+        else
+        {
+            thrusterOn.SetActive(false);
+            thrusterOff.SetActive(true);
+        }
 
 
         if (_fire && Time.time > _timeOfNextFire)
@@ -305,8 +316,13 @@ public class Player : MonoBehaviour
 
     public void SetpowerUp(int powerupID)
     {
-        
-        if (powerupID == 1) // implosion
+        if (powerupID == 0)
+        {
+            curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
+            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
+            return;
+        }
+        else if (powerupID == 1) // implosion
         {
             // spawn implosion effect
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, implosionArea);
@@ -315,17 +331,12 @@ public class Player : MonoBehaviour
                 if (enemies[i].CompareTag("Enemy"))
                     enemies[i].GetComponent<Enemy>().TakeDamage(implosionDamage);
             }
-            return;
-        }
-        else if (powerupID == 0)
-        {
-            curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
-            healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
         }
         else if (powerupID == 7)
         {
             minion.SetActive(true);
         }
+        healthGaugeFunctions.SetPowerUpUI(powerupID, true);
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;
     }
