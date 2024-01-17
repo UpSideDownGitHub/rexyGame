@@ -8091,7 +8091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 517.7, y: -240.1}
+  m_AnchoredPosition: {x: 569, y: -240.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483273594
@@ -8114,7 +8114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mingus Giv me a second
+  m_text: Mingus Vasseng
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
   m_sharedMaterial: {fileID: -5393992456892327062, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
@@ -9181,7 +9181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Design, UI design (Main menu), VFX '
+  m_text: Game Design, UI design (Main menu), VFX, UX design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
   m_sharedMaterial: {fileID: -5393992456892327062, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
@@ -19934,7 +19934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 495.2, y: -264.2}
+  m_AnchoredPosition: {x: 511, y: -264.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602659623
@@ -19957,7 +19957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Design, UI design (HUD), VFX '
+  m_text: Game Design, UI design (HUD), VFX, UX design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
   m_sharedMaterial: {fileID: -5393992456892327062, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
@@ -27686,7 +27686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Design, UI design (Leaderboard), VFX '
+  m_text: 'Game Design, UI design (Leaderboard & Tutorial), VFX '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
   m_sharedMaterial: {fileID: -5393992456892327062, guid: 37b949872496e964f9f34c3f71e77633, type: 2}
