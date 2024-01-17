@@ -5,7 +5,6 @@ using Dan;
 using Dan.Models;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEditor.Search;
 
 public class LeaderboardManagement : MonoBehaviour
 {

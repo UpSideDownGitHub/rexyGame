@@ -106,8 +106,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 3
   angleOffset: 90
-  maxHealth: 5
-  curHealth: 5
+  maxHealth: 3
+  curHealth: 3
   projectileDamage: 10
   touchDamage: 20
   Score: 50

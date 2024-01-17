@@ -116,12 +116,10 @@ public class HealthGaugeFunctions : MonoBehaviour
             print(currentHealth / maxHealth);
             if (i * (1f/11f) <= currentHealth / maxHealth)
             {
-                print("Enabled + " + i);
                 gaugeLights[i].SetActive(true);
             }
             else
             {
-                print("Disabled + " + i);
                 gaugeLights[i].SetActive(false);
             }
         }

@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+
 
 public enum EnemyType
 {
@@ -92,14 +89,6 @@ public class Enemy : MonoBehaviour
             agent.updateUpAxis = false;
             agent.updateRotation = false;
         }
-    }
-
-    public void SetMultipliers(float health, float damage)
-    {
-        touchDamage *= damage;
-        projectileDamage *= damage;
-        maxHealth *= health;
-        curHealth = maxHealth;
     }
 
     public void Start()
