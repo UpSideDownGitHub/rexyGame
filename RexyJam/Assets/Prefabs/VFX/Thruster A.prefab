@@ -9666,7 +9666,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1764923783634177218, guid: a52ff0ab4191b3c42a94eadf808589e8, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3258019092556129580, guid: a52ff0ab4191b3c42a94eadf808589e8, type: 3}
       propertyPath: m_Color.b
