@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 6556551496381902539, guid: 1134d0179db19a84b869626b2ca5d211, type: 3}
   - {fileID: 6556551496381902539, guid: 3c470782c8b9a484eb75c905673cf99f, type: 3}
   powerupDropChance: 0.5
+  explosionEffect: {fileID: 2153856817309997470, guid: a542842bc126b844da860f05d9c69599, type: 3}
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 4261331493483963901, guid: a6b5379edc585dc44bf18c8b4cd0c597, type: 3}
   machineGunBullet: {fileID: 0}

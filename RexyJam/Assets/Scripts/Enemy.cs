@@ -42,6 +42,9 @@ public class Enemy : MonoBehaviour
     [Range(0f, 1f)]
     public float powerupDropChance;
 
+    [Header("Explosion Effect")]
+    public GameObject explosionEffect;
+
     [Header("Shooting")]
     public GameObject firePoint;
     public GameObject bullet;
@@ -126,12 +129,13 @@ public class Enemy : MonoBehaviour
             }
             catch { /*NOTHING*/ }
 
-            if (damage != 999)
+            if (damage != 9999)
             {
                 Instantiate(pickups[0], transform.position, Quaternion.identity);
                 if (Random.value > powerupDropChance)
                     Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
             }
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
