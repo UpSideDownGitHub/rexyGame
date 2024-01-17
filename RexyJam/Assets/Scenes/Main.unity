@@ -517,6 +517,54 @@ Transform:
   - {fileID: 357876386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &231921822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231921824}
+  - component: {fileID: 231921823}
+  m_Layer: 0
+  m_Name: Projectile POOL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &231921823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231921822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe85c14c69536c4f998658565628500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxProj: e8030000
+  proj: []
+  projPrefabs:
+  - {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
+--- !u!4 &231921824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231921822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.9111457, y: -2.0136068, z: -0.073528625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237818621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 77468001574281361, guid: e41a7422b65650444b1acc2cae26f481, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3791411190669491303, guid: e41a7422b65650444b1acc2cae26f481, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2225,6 +2273,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621754487}
   m_CullTransparentMesh: 1
+--- !u!1 &628172218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628172219}
+  - component: {fileID: 628172220}
+  m_Layer: 8
+  m_Name: Minion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &628172219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628172218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1, y: 1.5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1069265225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &628172220
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628172218}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.019819975, g: 1, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &666535783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,6 +3409,7 @@ Transform:
   m_Children:
   - {fileID: 668140406}
   - {fileID: 983007758}
+  - {fileID: 628172219}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1069265226
@@ -3325,19 +3458,19 @@ MonoBehaviour:
     enabled: 0
     powerupLength: 5
     timeToDisable: 0
-  - name: Bounce Shot
-    enabled: 0
-    powerupLength: 5
-    timeToDisable: 0
   - name: Peirce Shot
     enabled: 0
     powerupLength: 5
     timeToDisable: 0
   - name: Ricochet Shot
-    enabled: 1
+    enabled: 0
     powerupLength: 5
     timeToDisable: 0
   - name: Super Fire
+    enabled: 0
+    powerupLength: 5
+    timeToDisable: 0
+  - name: Minion
     enabled: 0
     powerupLength: 5
     timeToDisable: 0
@@ -3347,6 +3480,9 @@ MonoBehaviour:
   tripleShotAngle: 30
   circleBulletCount: 8
   superFireRate: 0.1
+  minion: {fileID: 628172218}
+  angleOffset: 180
+  minionFireRate: 0.2
   healthGaugeFunctions: {fileID: 242862221}
 --- !u!114 &1069265227
 MonoBehaviour:
@@ -4564,7 +4700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 77468001574281361, guid: e41a7422b65650444b1acc2cae26f481, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3791411190669491303, guid: e41a7422b65650444b1acc2cae26f481, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6553,3 +6689,4 @@ SceneRoots:
   - {fileID: 242862220}
   - {fileID: 487389929}
   - {fileID: 1512808911}
+  - {fileID: 231921824}
