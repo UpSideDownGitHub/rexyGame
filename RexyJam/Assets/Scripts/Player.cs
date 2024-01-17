@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     public float angleOffset = -90;
     public float minionFireRate;
     private float _timeOfNextMinionShot;
+    public GameObject explosionEffect;
 
     [Header("UI")]
     public HealthGaugeFunctions healthGaugeFunctions;
@@ -325,6 +326,8 @@ public class Player : MonoBehaviour
         else if (powerupID == 1) // implosion
         {
             // spawn implosion effect
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            healthGaugeFunctions.bobbleHeadAnimator.SetTrigger("Shake");
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, implosionArea);
             for (int i = 0; i < enemies.Length; i++)
             {
