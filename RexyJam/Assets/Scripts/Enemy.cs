@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
     public float retreatSpeed;
     public float suicideDistance;
     public GameObject laserSight;
+    public float shootdelay;
 
 
     [Header("Kamakarzie")]
@@ -284,7 +285,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator ShootDelayed()
     {
         laserSight.SetActive(true);
-        yield return new WaitForSeconds(1.33f);
+        yield return new WaitForSeconds(shootdelay);
         laserSight.SetActive(false);
         var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
         tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);

@@ -139,6 +139,7 @@ MonoBehaviour:
   retreatSpeed: 5
   suicideDistance: 1.5
   laserSight: {fileID: 6483049236496980150}
+  shootdelay: 1.33
   rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
