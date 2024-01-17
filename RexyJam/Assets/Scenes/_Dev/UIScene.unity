@@ -475,6 +475,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8994027002430644304, guid: 4a188aa7f64f4d347bcb8a84c626b92b, type: 3}
+      propertyPath: lowHealthThreshold
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994027002430644304, guid: 4a188aa7f64f4d347bcb8a84c626b92b, type: 3}
+      propertyPath: lowHealthVignetteAnim
+      value: 
+      objectReference: {fileID: 3018182477911669771}
     - target: {fileID: 9222155064169620125, guid: 4a188aa7f64f4d347bcb8a84c626b92b, type: 3}
       propertyPath: m_Name
       value: HUD Canvas
@@ -484,6 +492,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a188aa7f64f4d347bcb8a84c626b92b, type: 3}
+--- !u!95 &3018182477911669771 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8173203658980333735, guid: 4a188aa7f64f4d347bcb8a84c626b92b, type: 3}
+  m_PrefabInstance: {fileID: 3018182477911669770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
