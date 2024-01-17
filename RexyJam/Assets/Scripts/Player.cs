@@ -2,8 +2,9 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using Random = UnityEngine.Random;
 [Serializable]
 public struct PowerupInfo
 {
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject player;
     public GameObject gun;
-    public GameObject[] firePoint;
+    public GameObject firePoint;
 
     [Header("Movement")]
     public float rotationSpeed;
@@ -34,29 +35,44 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float curHealth;
-    public Image healthImage;
+
+    [Header("I Frames")]
+    public bool iFrameActive;
+    public float iFrameTime;
+    private float _timeToDisableIFrame;
 
     [Header("Score")]
-    public TMP_Text scoreText;
-    public TMP_Text multiplierText;
     public int score;
     public float multiplier;
     public float maxMultiplier;
 
     [Header("Powerups")]
     /*
-     * 0 => Sheild 
-     * 0 => Triple Shot 
-     * 0 => Implosion 
-     * 0 => Disable Movement 
+     * 0 => Health
+     * 1 => Implosion 
+     * 2 => Triple Shot 
+     * 3 => Circle Shot
+     * 4 => Peirce Shot
+     * 5 => Ricochet Shot
+     * 6 => Super Fire
+     * 7 => minion
     */
     public PowerupInfo[] powerups;
     public float implosionDamage;
     public float implosionArea;
     public float healthIncreaseAmount;
+    public float tripleShotAngle;
+    public float circleBulletCount;
+    public float superFireRate;
+    public GameObject minion;
+    public float angleOffset = -90;
+    public float minionFireRate;
+    private float _timeOfNextMinionShot;
 
     [Header("UI")]
     public HealthGaugeFunctions healthGaugeFunctions;
+
+    ProjectilePool projPool;
 
     // INPUT
     private float _lookVecRex;
@@ -83,44 +99,54 @@ public class Player : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(6, 7);
         Physics2D.IgnoreLayerCollision(6, 8);
+        Physics2D.IgnoreLayerCollision(10, 10);
     }
 
     public void Start()
     {
         curHealth = maxHealth;
+        projPool = ProjectilePool.instance;
     }
 
     public void IncreaseMultiplier()
     {
         multiplier = multiplier + 0.1f >= maxMultiplier ? maxMultiplier : multiplier + 0.1f;
         healthGaugeFunctions.SetMultiplierBulbs(true);
-        multiplierText.text = "x " + multiplier;
+        healthGaugeFunctions.SetMultiplierUI(multiplier);
     }
 
     public void IncreaseScore(int amount)
     {
         score += (int)(amount * multiplier);
-        scoreText.text = score + " Pts";
+        healthGaugeFunctions.SetScoreUI(score);
     }
 
     public void ResetMultiplier()
     {
-        multiplierText.text = "";
         multiplier = 1;
+        healthGaugeFunctions.SetMultiplierBulbs(false);
+        healthGaugeFunctions.SetMultiplierUI(multiplier);
     }
 
     public void TakeDamage(float damage)
     {
+        if (iFrameActive)
+            return;
+
         if (!powerups[0].enabled)
         {
             ResetMultiplier();
             curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-            healthGaugeFunctions.SetMultiplierBulbs(false);
-            healthImage.fillAmount = curHealth / maxHealth;
+
+            iFrameActive = true;
+            _timeToDisableIFrame = Time.time + iFrameTime;
+
+
             if (curHealth == 0)
             {
                 PlayerPrefs.SetInt("Score", score);
+                SceneManager.LoadSceneAsync("EndScreen");
             }
         }
     }
@@ -128,15 +154,35 @@ public class Player : MonoBehaviour
     public void Update()
     {
         // powerups
-        for (int i = 0; i < powerups.Length; i++)
+        //for (int i = 0; i < powerups.Length; i++)
+        //{
+        //    if (powerups[i].enabled)
+        //    {
+        //        if (Time.time > powerups[i].timeToDisable)
+        //        {
+        //            powerups[i].enabled = false;
+        //        }
+        //    }
+        //}
+
+        // I Frames
+        if (Time.time > _timeToDisableIFrame && iFrameActive)
         {
-            if (powerups[i].enabled)
+            iFrameActive = false;
+        }
+
+        // Minion Powerup
+        if (powerups[7].enabled)
+        {
+            if (Time.time > _timeOfNextMinionShot)
             {
-                if (Time.time > powerups[i].timeToDisable)
-                {
-                    powerups[i].enabled = false;
-                }
+                _timeOfNextMinionShot = Time.time + minionFireRate;
+                FireTurrentBullet();
             }
+        }
+        else
+        {
+            minion.SetActive(false);
         }
 
         // movement
@@ -177,30 +223,74 @@ public class Player : MonoBehaviour
 
         if (_fire && Time.time > _timeOfNextFire)
         {
-            if (powerups[1].enabled)
-            {
+            if (powerups[6].enabled) // Super Shot
+                _timeOfNextFire = Time.time + superFireRate;
+            else
                 _timeOfNextFire = Time.time + fireRate;
-                for (int i = 0; i < firePoint.Length; i++)
-                {
-                    var rot = Quaternion.Euler(firePoint[i].transform.rotation.eulerAngles.x,
-                        firePoint[i].transform.rotation.eulerAngles.y,
-                        firePoint[i].transform.rotation.eulerAngles.z + 90);
-                    var tempBullet = Instantiate(bullet, firePoint[i].transform.position, rot);
-                    tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                    tempBullet.GetComponent<PlayerBullet>().player = this;
-                }
 
+            if (powerups[3].enabled) // circle
+            {
+                // spawn the bullets in a circle around
+                for (int i = 0; i < circleBulletCount; i++)
+                {
+                    var addedRot = 360 / circleBulletCount * i;
+                    SpawnBullet(Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90 + addedRot));
+                }
             }
             else
             {
-                _timeOfNextFire = Time.time + fireRate;
-                var rot = Quaternion.Euler(firePoint[0].transform.rotation.eulerAngles.x,
-                    firePoint[0].transform.rotation.eulerAngles.y,
-                    firePoint[0].transform.rotation.eulerAngles.z + 90);
-                var tempBullet = Instantiate(bullet, firePoint[0].transform.position, rot);
-                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                tempBullet.GetComponent<PlayerBullet>().player = this;
+                SpawnBullet(Quaternion.Euler(firePoint.transform.rotation.eulerAngles.x, firePoint.transform.rotation.eulerAngles.y, firePoint.transform.rotation.eulerAngles.z + 90));
             }
+        }
+    }
+
+    public void FireTurrentBullet()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length != 0)
+        {
+            int ran = Random.Range(0, enemies.Length);
+            var dir2 = minion.transform.position - enemies[ran].transform.position;
+            var angle = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg + angleOffset;
+            var rot = Quaternion.AngleAxis(angle, Vector3.forward);
+            var tempBullet = projPool.SpawnProjectile(0, minion.transform.position, rot);
+            if (tempBullet)
+            {
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<PlayerBullet>().SetValues(false, false, this, fireForce);
+            }
+            else
+                Debug.LogError("Not Enough Bullets For Player To Spawn");
+        }
+    }
+
+    public void SpawnBullet(Quaternion rot)
+    {
+        if (powerups[2].enabled) // Triple Shot
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                var newRot = Quaternion.Euler(rot.eulerAngles.x, rot.eulerAngles.y, rot.eulerAngles.z + i * tripleShotAngle);
+                var tempBullet = projPool.SpawnProjectile(0, firePoint.transform.position, newRot);
+                if (tempBullet)
+                {
+                    tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                    tempBullet.GetComponent<PlayerBullet>().SetValues(powerups[4].enabled, powerups[5].enabled, this, fireForce);
+                }
+                else
+                    Debug.LogError("Not Enough Bullets For Player To Spawn");
+            }
+        }
+        else
+        {
+            var tempBullet = projPool.SpawnProjectile(0, firePoint.transform.position, rot);
+            if (tempBullet)
+            {
+                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+                tempBullet.GetComponent<PlayerBullet>().SetValues(powerups[4].enabled, powerups[5].enabled, this, fireForce);
+            }
+            else
+                Debug.LogError("Not Enough Bullets For Player To Spawn");
         }
     }
 
@@ -215,7 +305,8 @@ public class Player : MonoBehaviour
 
     public void SetpowerUp(int powerupID)
     {
-        if (powerupID == 2) // implosion
+        
+        if (powerupID == 1) // implosion
         {
             // spawn implosion effect
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, implosionArea);
@@ -226,11 +317,14 @@ public class Player : MonoBehaviour
             }
             return;
         }
-        else if (powerupID == 3)
+        else if (powerupID == 0)
         {
             curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
-            healthImage.fillAmount = curHealth / maxHealth;
+        }
+        else if (powerupID == 7)
+        {
+            minion.SetActive(true);
         }
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;

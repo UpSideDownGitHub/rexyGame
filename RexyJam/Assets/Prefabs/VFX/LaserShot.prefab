@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3198791607286257647}
   - component: {fileID: 6699574893713128208}
   - component: {fileID: 1472291954599117615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4838,7 +4838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7619781760346334458}
   - component: {fileID: 5125313407859897744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4987,7 +4987,7 @@ GameObject:
   - component: {fileID: 1202532996014549010}
   - component: {fileID: 6116500663522014915}
   - component: {fileID: 2754239706052025551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LaserShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

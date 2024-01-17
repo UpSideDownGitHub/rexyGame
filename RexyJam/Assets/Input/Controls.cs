@@ -89,6 +89,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""99d2aa28-04bf-4e42-91db-d0ebd1a203bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,7 +214,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9318f1d8-1419-4577-be7c-14f0c0ddc757"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -333,6 +342,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Right Stick Controller"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""310ab534-e146-446e-946e-456034ba0de1"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35b35d4d-e4e6-4e54-806b-3bebb30b6452"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04913855-25b3-4435-99be-86620d2e5516"",
+                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9688eeb4-7ec6-42f3-8989-00edc7dae9b5"",
+                    ""path"": ""<HID::Real Pro Gear Rexy Wheels Device>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -348,6 +401,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Thrust = m_Gameplay.FindAction("Thrust", throwIfNotFound: true);
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
+        m_Gameplay_Select2 = m_Gameplay.FindAction("Select 2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +470,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Thrust;
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Select;
+    private readonly InputAction m_Gameplay_Select2;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -427,6 +482,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Thrust => m_Wrapper.m_Gameplay_Thrust;
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Select => m_Wrapper.m_Gameplay_Select;
+        public InputAction @Select2 => m_Wrapper.m_Gameplay_Select2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +513,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @Select2.started += instance.OnSelect2;
+            @Select2.performed += instance.OnSelect2;
+            @Select2.canceled += instance.OnSelect2;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -482,6 +541,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @Select2.started -= instance.OnSelect2;
+            @Select2.performed -= instance.OnSelect2;
+            @Select2.canceled -= instance.OnSelect2;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -508,5 +570,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnThrust(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnSelect2(InputAction.CallbackContext context);
     }
 }

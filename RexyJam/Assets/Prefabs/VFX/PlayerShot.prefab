@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 3168322967136468444}
   - component: {fileID: 6045765812798030289}
   - component: {fileID: 923589434816161575}
-  m_Layer: 0
+  - component: {fileID: 6414769164588870947}
+  m_Layer: 10
   m_Name: PlayerShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,14 +197,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   timeAlive: 5
-  assist: 0
-  assistArea: 20
-  viewAngle: 50
-  closestEnemy: {fileID: 0}
-  rb: {fileID: 3168322967136468444}
-  turnSpeed: 100
-  movmentSpeed: 50
   player: {fileID: 0}
+  peirce: 0
+  ricochet: 0
+  ricochetSearchRadius: 10
+  angleOffset: -90
+  redirectForce: 0
+  proj: {fileID: 6414769164588870947}
+--- !u!114 &6414769164588870947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617737425973227929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1068bf86efee89744815fd9bf175382d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSpawnable: 0
 --- !u!1 &7428192221929879201
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7884179132260461192}
   - component: {fileID: 1106044943496100885}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

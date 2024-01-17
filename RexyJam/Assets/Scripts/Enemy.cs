@@ -36,7 +36,11 @@ public class Enemy : MonoBehaviour
     public float touchDamage;
     public int Score = 100;
     public bool died = false;
+
+    [Header("Pickups")]
     public GameObject[] pickups;
+    [Range(0f, 1f)]
+    public float powerupDropChance;
 
     [Header("Shooting")]
     public GameObject firePoint;
@@ -116,9 +120,17 @@ public class Enemy : MonoBehaviour
         if (curHealth == 0 && !died)
         {
             died = true;
-            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
+            try
+            {
+                GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
+            }
+            catch { /*NOTHING*/ }
+            
             // have a change to spawn heath or powerup
-            Instantiate(pickups[Random.Range(0, pickups.Length)], transform.position, Quaternion.identity);
+            // Spawn Health & chance to spawn the rest of the pickups
+            Instantiate(pickups[0], transform.position, Quaternion.identity);
+            if (Random.value > powerupDropChance)
+                Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
@@ -182,7 +194,7 @@ public class Enemy : MonoBehaviour
             }
         }
         else if (collision.gameObject.CompareTag("EnemyDeath"))
-            Destroy(gameObject);
+            TakeDamage(9999);
     }
 
     public void Bug()
