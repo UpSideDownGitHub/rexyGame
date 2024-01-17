@@ -1833,7 +1833,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.1872573, y: 0.52767015}
+  m_Offset: {x: -1.3584688, y: 0.74168456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1844,7 +1844,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.3745146, y: 2.0553403}
+  m_Size: {x: 3.7169375, y: 2.483369}
   m_EdgeRadius: 0
 --- !u!212 &579638750
 SpriteRenderer:
@@ -4227,7 +4227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1352743583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.6
   m_Color: {r: 0.2444452, g: 1, b: 0, a: 1}
-  m_Intensity: 9.8
+  m_Intensity: 31.19
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 0
   m_PointLightOuterAngle: 5
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5
+  m_PointLightOuterRadius: 1.23
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -5995,6 +5995,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 516202d87af23cf4aa5c5280fe609c16, type: 3}
+--- !u!1001 &2024956496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_Name
+      value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.3057766
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2662454
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791411190669491303, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483049236496980150, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
 --- !u!1 &2043673315
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,3 +6194,4 @@ SceneRoots:
   - {fileID: 1179776025}
   - {fileID: 2021325253}
   - {fileID: 1781648715}
+  - {fileID: 2024956496}
