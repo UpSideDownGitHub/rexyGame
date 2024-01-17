@@ -37,6 +37,7 @@ public class EnemyWaves : MonoBehaviour
 {
     public EnemyWave[] enemyWaves;
     public GameObject[] spawnPositions;
+    public GameObject[] warningPositions;
     public int currentWaveInfo;
     public int currentWave;
 
@@ -116,15 +117,19 @@ public class EnemyWaves : MonoBehaviour
                     {
                         if (ran <= enemyWaves[currentWaveInfo].enemies[i].SpawnChance)
                         {
+                            var rand = Random.Range(0, spawnPositions.Length);
                             tempEnemy = Instantiate(enemyWaves[currentWaveInfo].enemies[i].enemyObject,
-                                spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, quaternion.identity);
+                                spawnPositions[rand].transform.position, quaternion.identity);
+                            warningPositions[rand].SetActive(true);
                         }
                     }
                     else if (ran > enemyWaves[currentWaveInfo].enemies[i - 1].SpawnChance &&
                         ran <= enemyWaves[currentWaveInfo].enemies[i].SpawnChance)
                     {
+                        var rand = Random.Range(0, spawnPositions.Length);
                         tempEnemy = Instantiate(enemyWaves[currentWaveInfo].enemies[i].enemyObject,
-                            spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, quaternion.identity);
+                            spawnPositions[rand].transform.position, quaternion.identity);
+                        warningPositions[rand].SetActive(true);
                     }
 
                 }
