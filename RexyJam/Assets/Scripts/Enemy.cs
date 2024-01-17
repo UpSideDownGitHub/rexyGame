@@ -66,6 +66,8 @@ public class Enemy : MonoBehaviour
     public float distanceToRetreat;
     public float retreatSpeed;
     public float suicideDistance;
+    public GameObject laserSight;
+    public float shootdelay;
 
 
     [Header("Kamakarzie")]
@@ -270,13 +272,24 @@ public class Enemy : MonoBehaviour
 
             if (distance < maxAttackDistance && distance > minAttackDistance && Time.time > _timeOfNextAttack)
             {
+                // spawn laserSight
+                // wait for play
+                // fire bullet
                 _timeOfNextAttack = Time.time + attackTime;
                 // fire projectile at player
-                var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
+                StartCoroutine(ShootDelayed());
             }
         }
+    }
+    
+    public IEnumerator ShootDelayed()
+    {
+        laserSight.SetActive(true);
+        yield return new WaitForSeconds(shootdelay);
+        laserSight.SetActive(false);
+        var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
+        tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
     }
 
     public void Tank()
@@ -303,9 +316,7 @@ public class Enemy : MonoBehaviour
             {
                 _timeOfNextAttack = Time.time + attackTime;
                 // fire projectile at player
-                var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
-                tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;
+                StartCoroutine(ShootDelayed());
             }
         }
     }
