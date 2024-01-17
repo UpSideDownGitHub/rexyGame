@@ -71,7 +71,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.5
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 7.86
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -246,7 +246,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2258627774549229355}
   serializedVersion: 8
   lengthInSec: 3
-  simulationSpeed: 5
+  simulationSpeed: 7
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -491,7 +491,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
