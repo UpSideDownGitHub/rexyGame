@@ -74,6 +74,10 @@ public class Player : MonoBehaviour
 
     ProjectilePool projPool;
 
+    [Header("Thruster Effect")]
+    public GameObject thrusterOn;
+    public GameObject thrusterOff;
+
     // INPUT
     private float _lookVecRex;
     private float _lookVecOther;
@@ -154,16 +158,16 @@ public class Player : MonoBehaviour
     public void Update()
     {
         // powerups
-        //for (int i = 0; i < powerups.Length; i++)
-        //{
-        //    if (powerups[i].enabled)
-        //    {
-        //        if (Time.time > powerups[i].timeToDisable)
-        //        {
-        //            powerups[i].enabled = false;
-        //        }
-        //    }
-        //}
+        for (int i = 0; i < powerups.Length; i++)
+        {
+            if (powerups[i].enabled)
+            {
+                if (Time.time > powerups[i].timeToDisable)
+                {
+                    powerups[i].enabled = false;
+                }
+            }
+        }
 
         // I Frames
         if (Time.time > _timeToDisableIFrame && iFrameActive)
@@ -218,7 +222,16 @@ public class Player : MonoBehaviour
 
 
         if (_thrust)
+        {
+            thrusterOn.SetActive(true);
+            thrusterOff.SetActive(false);
             rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
+        }
+        else
+        {
+            thrusterOn.SetActive(false);
+            thrusterOff.SetActive(true);
+        }
 
 
         if (_fire && Time.time > _timeOfNextFire)
