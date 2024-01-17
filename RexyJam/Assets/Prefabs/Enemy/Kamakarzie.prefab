@@ -106,8 +106,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 3
   angleOffset: 90
-  maxHealth: 5
-  curHealth: 5
+  maxHealth: 3
+  curHealth: 3
   projectileDamage: 10
   touchDamage: 20
   Score: 50
@@ -137,6 +137,8 @@ MonoBehaviour:
   distanceToRetreat: 4
   retreatSpeed: 5
   suicideDistance: 0
+  laserSight: {fileID: 0}
+  shootdelay: 0
   rotationSpeed: 90
   lerpSpeed: 2
   offset: {x: 0, y: 5, z: 0}
