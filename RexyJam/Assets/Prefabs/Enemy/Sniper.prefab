@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 6556551496381902539, guid: d63ae653ba063c64e8cd1c26df3e12d7, type: 3}
   - {fileID: 6556551496381902539, guid: 1134d0179db19a84b869626b2ca5d211, type: 3}
   - {fileID: 6556551496381902539, guid: 3c470782c8b9a484eb75c905673cf99f, type: 3}
-  powerupDropChance: 0.5
+  powerupDropChance: 0.4
   explosionEffect: {fileID: 2153856817309997470, guid: a542842bc126b844da860f05d9c69599, type: 3}
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}
@@ -80,10 +80,10 @@ MonoBehaviour:
   attackTimeMachineGun: 0
   movmentSpeed: 0
   turnSpeed: 0
-  stoppingDistance: 6
-  minAttackDistance: 4
-  maxAttackDistance: 7
-  distanceToRetreat: 4
+  stoppingDistance: 7
+  minAttackDistance: 5
+  maxAttackDistance: 8
+  distanceToRetreat: 5
   retreatSpeed: 5
   suicideDistance: 1.5
   laserSight: {fileID: 6483049236496980150}
@@ -108,7 +108,7 @@ NavMeshAgent:
   m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 5
-  m_StoppingDistance: 6
+  m_StoppingDistance: 7
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05526191, y: 0.0335671}
+  m_Offset: {x: -0.00006365776, y: 0.03356707}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1105237, y: 1.5510364}
+  m_Size: {x: 3.1022468, y: 1.5510364}
   m_EdgeRadius: 0
 --- !u!1 &3240121775749491104
 GameObject:

@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
             if (damage != 9999)
             {
                 Instantiate(pickups[0], transform.position, Quaternion.identity);
-                if (Random.value > powerupDropChance)
+                if (Random.value < powerupDropChance)
                     Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
             }
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
