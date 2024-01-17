@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 441162342}
   player: {fileID: 1069265228}
-  speed: 0.5
+  speed: 0.02
 --- !u!114 &441162342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2923,63 +2923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableTime: 2
---- !u!1001 &704977126
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.701051
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.0985887
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791411190669491303, guid: 521255ec071395049893c58368e77d9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 521255ec071395049893c58368e77d9f, type: 3}
 --- !u!1 &757188018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,8 +3649,8 @@ MonoBehaviour:
   bullet: {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
   fireForce: 1000
   fireRate: 0.15
-  maxHealth: 100
-  curHealth: 100
+  maxHealth: 500
+  curHealth: 500
   iFrameActive: 0
   iFrameTime: 0
   score: 0
@@ -4703,8 +4646,6 @@ MonoBehaviour:
     - enemyName: Drone - 100
       enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: 2-3
     maxRound: 3
     totalEnemyCount: 5
@@ -4719,8 +4660,6 @@ MonoBehaviour:
     - enemyName: Kamakarzi - 50
       enemyObject: {fileID: 77468001574281361, guid: e2fea65941296af4190f28c6421b97af, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: 3-4
     maxRound: 4
     totalEnemyCount: 25
@@ -4738,24 +4677,20 @@ MonoBehaviour:
     - enemyName: Drone - 25
       enemyObject: {fileID: 77468001574281361, guid: ff4decabc058aaa42b1ec4f3b56c12e7, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: 5
     maxRound: 5
     totalEnemyCount: 5
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
-    maxOnScreenEnemies: 1
+    maxOnScreenEnemies: 3
     currentEnemiesOnScreen: 0
     enemies:
     - enemyName: Sniper - 100
       enemyObject: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: 6-7
     maxRound: 7
-    totalEnemyCount: 50
+    totalEnemyCount: 25
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
     maxOnScreenEnemies: 5
@@ -4773,24 +4708,20 @@ MonoBehaviour:
     - enemyName: Sniper - 10
       enemyObject: {fileID: 77468001574281361, guid: fdf4b4e054dfd614382334b17432f059, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: 8
     maxRound: 8
     totalEnemyCount: 5
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
-    maxOnScreenEnemies: 1
+    maxOnScreenEnemies: 3
     currentEnemiesOnScreen: 0
     enemies:
     - enemyName: tank - 100
       enemyObject: {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   - waveName: FINAL
     maxRound: -1
-    totalEnemyCount: 100
+    totalEnemyCount: 50
     currentEnemyKilledCount: 0
     currentEnemySpawnedCount: 0
     maxOnScreenEnemies: 10
@@ -4811,8 +4742,6 @@ MonoBehaviour:
     - enemyName: Tank - 10
       enemyObject: {fileID: 77468001574281361, guid: 521255ec071395049893c58368e77d9f, type: 3}
       SpawnChance: 1
-    healthMultiplier: 1
-    damageMultiplier: 1
   spawnPositions:
   - {fileID: 1559516856}
   - {fileID: 202034759}
@@ -4857,8 +4786,8 @@ MonoBehaviour:
   - {fileID: 1344626444}
   currentWaveInfo: 0
   currentWave: 0
-  minEnemySpawnRate: 0.1
-  maxEnemySpawnRate: 1
+  minEnemySpawnRate: 0.01
+  maxEnemySpawnRate: 0.25
   waveNumber: {fileID: 621754489}
   showWaveNumber: 1
   showWaveNumberTime: 2
@@ -6659,4 +6588,3 @@ SceneRoots:
   - {fileID: 1179776025}
   - {fileID: 2021325253}
   - {fileID: 1781648715}
-  - {fileID: 704977126}

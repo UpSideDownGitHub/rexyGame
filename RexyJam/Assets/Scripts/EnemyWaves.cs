@@ -28,8 +28,6 @@ public struct EnemyWave
     public int maxOnScreenEnemies;
     public int currentEnemiesOnScreen;
     public EnemyInfo[] enemies;
-    public float healthMultiplier;
-    public float damageMultiplier;
 }
 
 
@@ -86,10 +84,8 @@ public class EnemyWaves : MonoBehaviour
                 // if the current wave info has ended
                 if (enemyWaves[currentWaveInfo].maxRound == -1)
                 {
-                    enemyWaves[currentWaveInfo].maxOnScreenEnemies++;
-                    enemyWaves[currentWaveInfo].totalEnemyCount++;
-                    enemyWaves[currentWaveInfo].healthMultiplier += (float)currentWave / 10f;
-                    enemyWaves[currentWaveInfo].damageMultiplier += (float)currentWave / 10f;
+                    enemyWaves[currentWaveInfo].maxOnScreenEnemies += currentWave;
+                    enemyWaves[currentWaveInfo].totalEnemyCount += currentWave;
                 }
                 else if (currentWave > enemyWaves[currentWaveInfo].maxRound)
                     currentWaveInfo++;
@@ -133,10 +129,6 @@ public class EnemyWaves : MonoBehaviour
                     }
 
                 }
-                 
-                // set multipliers
-                tempEnemy.GetComponent<Enemy>().SetMultipliers(enemyWaves[currentWaveInfo].healthMultiplier,
-                    enemyWaves[currentWaveInfo].damageMultiplier);
                 enemyWaves[currentWaveInfo].currentEnemiesOnScreen++;
                 enemyWaves[currentWaveInfo].currentEnemySpawnedCount++;
                 return;

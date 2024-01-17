@@ -94,14 +94,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void SetMultipliers(float health, float damage)
-    {
-        touchDamage *= damage;
-        projectileDamage *= damage;
-        maxHealth *= health;
-        curHealth = maxHealth;
-    }
-
     public void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
