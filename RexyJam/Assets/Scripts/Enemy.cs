@@ -125,12 +125,13 @@ public class Enemy : MonoBehaviour
                 GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyWaves>().EnemyDied();
             }
             catch { /*NOTHING*/ }
-            
-            // have a change to spawn heath or powerup
-            // Spawn Health & chance to spawn the rest of the pickups
-            Instantiate(pickups[0], transform.position, Quaternion.identity);
-            if (Random.value > powerupDropChance)
-                Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
+
+            if (damage != 999)
+            {
+                Instantiate(pickups[0], transform.position, Quaternion.identity);
+                if (Random.value > powerupDropChance)
+                    Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

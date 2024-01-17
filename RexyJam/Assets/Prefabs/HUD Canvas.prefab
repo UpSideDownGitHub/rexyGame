@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4953926238677577568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5234391991259188413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3246,7 +3246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4104227620704473078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3986,7 +3986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4592766690863642032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4346,7 +4346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2531635693520415549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4732,7 +4732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x 0.0
+  m_text: x 1.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca9591c6221bb5040afdff31be1f90b4, type: 2}
   m_sharedMaterial: {fileID: -7449201571232153146, guid: ca9591c6221bb5040afdff31be1f90b4, type: 2}
@@ -5428,7 +5428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6659847290396689405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7568,7 +7568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5435470481651095465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11699,7 +11699,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -12754,12 +12754,11 @@ MonoBehaviour:
   bulbAnimator: {fileID: 4525727721647476863}
   bobbleHeadAnimator: {fileID: 7684331392114987145}
   newWaveBulbs: {fileID: 2292463032646026266}
-  multiplierBulbs: {fileID: 4753861052296996753}
   waveBulbs:
   - {fileID: 2172030738085169451}
   - {fileID: 7045009752159994560}
   - {fileID: 5989516656802195979}
-  waveSliderImage: {fileID: 0}
+  waveSliderImage: {fileID: 7073453414271001881}
   gaugeSpeed: 100
   gaugeArrow: {fileID: 4214570570672097572}
   gaugeLights:
@@ -12794,7 +12793,10 @@ MonoBehaviour:
   - {fileID: 371596605342459511}
   - {fileID: 5665742042704548945}
   - {fileID: 4106480203958741267}
-  multiplierBulbsText: {fileID: 2814586448944017221}
+  multiplierBulbAnim: {fileID: 7631632623468829188}
+  monitorAnim: {fileID: 7044945820281978554}
+  monitorTextAnim: {fileID: 2405709981077208300}
+  multiplierBulbsText: {fileID: 7542893796920599634}
 --- !u!1001 &67716505464516335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14392,17 +14394,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7071173842011422047, guid: 5a2bddd2803ae2740ad8afb563da7178, type: 3}
   m_PrefabInstance: {fileID: 5060673447859045226}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2814586448944017221 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7004351717056474159, guid: 5a2bddd2803ae2740ad8afb563da7178, type: 3}
-  m_PrefabInstance: {fileID: 5060673447859045226}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5281284316401278129
 PrefabInstance:
   m_ObjectHideFlags: 0

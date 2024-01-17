@@ -9,7 +9,6 @@ public class HealthGaugeFunctions : MonoBehaviour
     public Animator bulbAnimator;
     public Animator bobbleHeadAnimator;
     public Animator newWaveBulbs;
-    public Animator multiplierBulbs;
 
     [Header("Wave UI")]
     public TMP_Text[] waveBulbs;
@@ -30,11 +29,22 @@ public class HealthGaugeFunctions : MonoBehaviour
     public GameObject[] powerupGlows;
 
     [Header("Muliplier UI")]
+    public Animator multiplierBulbAnim;
+    public Animator monitorAnim;
+    public Animator monitorTextAnim;
     public TMP_Text multiplierBulbsText;
 
     public void SetMultiplierUI(float multiplier)
     {
-        // TO BE IMPLEMENTED
+        multiplierBulbsText.text = "x " + multiplier.ToString("0.0");
+    }
+
+    public void SetMultiplierBulbs(bool active)
+    {
+        multiplierBulbAnim.SetBool("Multiplier Active", active);
+        monitorTextAnim.SetBool("Active", active);
+        if (!active )
+            monitorAnim.SetTrigger("Reset");
     }
 
     public void SetPowerUpUI(int ID, bool toggle)
@@ -100,18 +110,26 @@ public class HealthGaugeFunctions : MonoBehaviour
 
         for (int i = 0; i < gaugeLights.Length; i++)
         {
-            if (i * (1/11) <= currentHealth / maxHealth)
+            print(i * (1f / 11f));
+            print(currentHealth / maxHealth);
+            if (i * (1f/11f) <= currentHealth / maxHealth)
             {
+                print("Enabled + " + i);
                 gaugeLights[i].SetActive(true);
             }
             else
             {
+                print("Disabled + " + i);
                 gaugeLights[i].SetActive(false);
             }
         }
 
-        StopAllCoroutines();
-        StartCoroutine(ChangeGauge(currentHealth, maxHealth));
+        //StopAllCoroutines();
+        //StartCoroutine(ChangeGauge(currentHealth, maxHealth));
+        float healthPercent = currentHealth / maxHealth;
+        float targetRotation = 180 * (1 - healthPercent);
+        gaugeArrow.transform.eulerAngles = new Vector3(0, 0, targetRotation);
+
 
         if (currentHealth / maxHealth <= 0.25f)
         {
@@ -170,8 +188,5 @@ public class HealthGaugeFunctions : MonoBehaviour
         newWaveBulbs.SetTrigger("New Wave");
     }
 
-    public void SetMultiplierBulbs(bool active)
-    {
-        multiplierBulbs.SetBool("Multiplier Active", active);
-    }
+
 }
