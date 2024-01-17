@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8614462130293662810}
   - component: {fileID: 4246398221291202691}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 2845931126078052167}
   - component: {fileID: 3655031738309854332}
   - component: {fileID: 2169128019470103378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4988,7 +4988,7 @@ GameObject:
   - component: {fileID: -828463365541675676}
   - component: {fileID: -3402675583593979757}
   - component: {fileID: -5936944444242734303}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlasmaBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5175,7 +5175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7848397662775178491}
   - component: {fileID: 223500135350533562}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5258,7 +5258,7 @@ GameObject:
   - component: {fileID: 2875224457368719409}
   - component: {fileID: 5948420737146695987}
   - component: {fileID: 7281919607393823749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightning (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10087,7 +10087,7 @@ GameObject:
   - component: {fileID: 7035351972244305322}
   - component: {fileID: 2143461314703982079}
   - component: {fileID: 8779102712608392082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sparklytrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14915,7 +14915,7 @@ GameObject:
   - component: {fileID: 3941908540205720634}
   - component: {fileID: 2434502300604992416}
   - component: {fileID: 774766189639628434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lightning (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

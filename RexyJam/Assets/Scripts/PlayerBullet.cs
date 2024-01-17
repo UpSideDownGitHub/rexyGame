@@ -14,16 +14,16 @@ public class PlayerBullet : MonoBehaviour
     public Player player;
 
     [Header("Powerups")]
-    public bool bounce;
     public bool peirce;
     public bool ricochet;
     public float ricochetSearchRadius;
     public float angleOffset = 90;
     public float redirectForce;
 
-    public void SetValues(bool bounce, bool peirce, bool ricochet, Player player, float redirectForce)
+    public Proj proj;
+
+    public void SetValues(bool peirce, bool ricochet, Player player, float redirectForce)
     {
-        this.bounce = bounce;
         this.peirce = peirce;
         this.ricochet = ricochet;
         this.player = player;
@@ -47,18 +47,11 @@ public class PlayerBullet : MonoBehaviour
             if (ricochet)
                 Ricochet();
             else if (!peirce)
-                Destroy(gameObject);
+                customDestroy();
         }
         else if (collision.CompareTag("BulletDeath"))
         {
-            if (bounce)
-            {
-                // Random Bounce
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x * Random.value > 0.5 ? -1 : 1, 
-                    GetComponent<Rigidbody2D>().velocity.y * Random.value > 0.5 ? -1 : 1);
-            }
-            else
-                Destroy(gameObject);
+            customDestroy();
         }
     }
 
@@ -91,7 +84,6 @@ public class PlayerBullet : MonoBehaviour
 
     public void customDestroy()
     {
-        // apply powerups if they are active
-        Destroy(gameObject);
+        proj.setFree();
     }
 }

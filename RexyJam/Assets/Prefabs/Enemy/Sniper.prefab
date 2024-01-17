@@ -113,9 +113,14 @@ MonoBehaviour:
   Score: 150
   died: 0
   pickups:
-  - {fileID: 2239399362118759041, guid: 3a135d22a4911bc4e85be0519e048cc5, type: 3}
+  - {fileID: 1102676376186072549, guid: 6be7070b3f97e834fbab153097fac54c, type: 3}
   - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
   - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
+  - {fileID: 6556551496381902539, guid: c239b490c92b191468f5d4d78b0a6e9a, type: 3}
+  - {fileID: 6556551496381902539, guid: 919a41e5f7cedff4abb8033a3744302f, type: 3}
+  - {fileID: 6556551496381902539, guid: d63ae653ba063c64e8cd1c26df3e12d7, type: 3}
+  - {fileID: 6556551496381902539, guid: 1134d0179db19a84b869626b2ca5d211, type: 3}
+  - {fileID: 6556551496381902539, guid: 3c470782c8b9a484eb75c905673cf99f, type: 3}
   powerupDropChance: 0.5
   firePoint: {fileID: 3240121775749491104}
   bullet: {fileID: 9135065870938947689, guid: 00170f9d9e218e54982b9c7042a1fe46, type: 3}

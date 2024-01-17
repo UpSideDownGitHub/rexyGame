@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2716566847238891474}
   - component: {fileID: 3256681092605199091}
   - component: {fileID: -4986284771782387954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MachineGunBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4347222126403469645}
   - component: {fileID: 548556856720254561}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

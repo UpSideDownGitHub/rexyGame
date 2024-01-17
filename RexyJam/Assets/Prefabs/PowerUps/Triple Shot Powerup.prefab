@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627b93b6acd835b44a9868b0d81a0d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupID: 1
+  powerupID: 2
   lerpTime: 2
   attactDistance: 5
   attracted: 0
+  time: 0
