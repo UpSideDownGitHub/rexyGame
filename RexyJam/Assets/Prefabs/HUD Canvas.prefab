@@ -12759,6 +12759,7 @@ MonoBehaviour:
   - {fileID: 7045009752159994560}
   - {fileID: 5989516656802195979}
   waveSliderImage: {fileID: 7073453414271001881}
+  lowHealthThreshold: 0.3
   gaugeSpeed: 100
   gaugeArrow: {fileID: 4214570570672097572}
   gaugeLights:
@@ -12777,6 +12778,7 @@ MonoBehaviour:
   - {fileID: 6147464078083233105}
   - {fileID: 881996650707460238}
   - {fileID: 9055666429678801224}
+  lowHealthVignetteAnim: {fileID: 8173203658980333735}
   scoreBulbs:
   - {fileID: 9159254005965232776}
   - {fileID: 3487434088256280279}
