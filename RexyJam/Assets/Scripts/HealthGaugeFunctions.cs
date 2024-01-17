@@ -17,10 +17,12 @@ public class HealthGaugeFunctions : MonoBehaviour
     public Image waveSliderImage;
 
     [Header("Health UI")]
+    public float lowHealthThreshold;
     public float gaugeSpeed;
     public GameObject gaugeArrow;
     public GameObject[] gaugeLights;
     public TMP_Text[] healthNixieTexts;
+    public Animator lowHealthVignetteAnim;
 
     [Header("Score UI")]
     public TMP_Text[] scoreBulbs;
@@ -131,12 +133,14 @@ public class HealthGaugeFunctions : MonoBehaviour
         gaugeArrow.transform.eulerAngles = new Vector3(0, 0, targetRotation);
 
 
-        if (currentHealth / maxHealth <= 0.25f)
+        if (currentHealth / maxHealth <= lowHealthThreshold)
         {
+            lowHealthVignetteAnim.SetBool("Low Health", true);
             TriggerLight(true);
         }
         else
         {
+            lowHealthVignetteAnim.SetBool("Low Health", false);
             TriggerLight(false);
         }
     }

@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public float fireForce;
     public float fireRate;
+    private float _actualFireRate;
     private float _timeOfNextFire;
 
     [Header("Health")]
@@ -64,11 +65,15 @@ public class Player : MonoBehaviour
     public float tripleShotAngle;
     public float circleBulletCount;
     public float superFireRate;
+    private float _actualSuperFireRate;
     public GameObject minion;
     public float angleOffset = -90;
     public float minionFireRate;
     private float _timeOfNextMinionShot;
     public GameObject explosionEffect;
+
+    [Range(0f,1f)]
+    public float lightingDecreaseAmount;
 
     [Header("UI")]
     public HealthGaugeFunctions healthGaugeFunctions;
@@ -156,10 +161,15 @@ public class Player : MonoBehaviour
     public void Update()
     {
         // powerups
+        _actualSuperFireRate = superFireRate;
+        _actualFireRate = fireRate;
         for (int i = 0; i < powerups.Length; i++)
         {
             if (powerups[i].enabled)
             {
+                _actualSuperFireRate /= lightingDecreaseAmount;
+                _actualFireRate /= lightingDecreaseAmount;
+
                 if (Time.time > powerups[i].timeToDisable)
                 {
                     powerups[i].enabled = false;
@@ -236,9 +246,9 @@ public class Player : MonoBehaviour
         if (_fire && Time.time > _timeOfNextFire)
         {
             if (powerups[6].enabled) // Super Shot
-                _timeOfNextFire = Time.time + superFireRate;
+                _timeOfNextFire = Time.time + _actualSuperFireRate;
             else
-                _timeOfNextFire = Time.time + fireRate;
+                _timeOfNextFire = Time.time + _actualFireRate;
 
             if (powerups[3].enabled) // circle
             {
