@@ -97,7 +97,6 @@ MonoBehaviour:
   distanceDecreaseTime: 0
   distanceDecreaseAmount: 0
   shootSource: {fileID: 0}
-  deathSource: {fileID: 1641799694937705072}
 --- !u!61 &2386841380601048856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,7 +181,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a8e0fc0ab69cf54db905624d550fea3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

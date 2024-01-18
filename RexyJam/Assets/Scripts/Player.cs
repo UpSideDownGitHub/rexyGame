@@ -232,11 +232,11 @@ public class Player : MonoBehaviour
                 val = -(1 - Mathf.Abs(_lookVecRex));
             else
                 val = 1 - val;
-            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * val));
+            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * val * Time.deltaTime));
         }
         else
         {
-            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * _lookVecOther));
+            player.transform.Rotate(new Vector3(0, 0, -rotationSpeed * _lookVecOther * Time.deltaTime));
         }
 
         if (_aimVecRex != 0)
@@ -246,11 +246,11 @@ public class Player : MonoBehaviour
                 val = -(1 - Mathf.Abs(_aimVecRex));
             else
                 val = 1 - val;
-            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * val));
+            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * val * Time.deltaTime));
         }
         else
         {
-            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * _aimVecOther));
+            gun.transform.Rotate(new Vector3(0, 0, gunRotationSpeed * _aimVecOther * Time.deltaTime));
         }
 
 
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
                 thruster.Play();
             thrusterOn.SetActive(true);
             thrusterOff.SetActive(false);
-            rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
+            rb.AddForce(player.transform.up * thrustForce * Time.deltaTime, ForceMode2D.Force);
         }
         else
         {
@@ -377,7 +377,7 @@ public class Player : MonoBehaviour
             for (int i = 0; i < enemies.Length; i++)
             {
                 if (enemies[i].CompareTag("Enemy"))
-                    enemies[i].GetComponent<Enemy>().TakeDamage(implosionDamage);
+                    enemies[i].GetComponent<Enemy>().TakeDamage(999);
             }
         }
         else if (powerupID == 7)

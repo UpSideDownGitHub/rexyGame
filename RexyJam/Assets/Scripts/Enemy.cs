@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -126,7 +127,11 @@ public class Enemy : MonoBehaviour
             }
             catch { /*NOTHING*/ }
 
-            if (damage != 9999)
+            if (damage == 999)
+            {
+                Instantiate(pickups[0], transform.position, Quaternion.identity);
+            }
+            else if (damage != 9999)
             {
                 Instantiate(pickups[0], transform.position, Quaternion.identity);
                 if (heavy)

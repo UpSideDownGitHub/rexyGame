@@ -81,11 +81,11 @@ MonoBehaviour:
   attackTimeMachineGun: 0
   movmentSpeed: 0
   turnSpeed: 0
-  stoppingDistance: 7
+  stoppingDistance: 5
   minAttackDistance: 5
   maxAttackDistance: 8
   distanceToRetreat: 5
-  retreatSpeed: 5
+  retreatSpeed: 4
   suicideDistance: 1.5
   laserSight: {fileID: 6483049236496980150}
   shootdelay: 1.33
@@ -99,7 +99,6 @@ MonoBehaviour:
   distanceDecreaseTime: 0
   distanceDecreaseAmount: 0
   shootSource: {fileID: -8605294683301401798}
-  deathSource: {fileID: -815405758229768419}
 --- !u!195 &2186176208072594299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -179,7 +178,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a8e0fc0ab69cf54db905624d550fea3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -275,7 +274,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f27275856ff3f0445b2927c097afdde0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

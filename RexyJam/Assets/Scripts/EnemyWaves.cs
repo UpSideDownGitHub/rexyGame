@@ -50,6 +50,11 @@ public class EnemyWaves : MonoBehaviour
     [Header("Sounde")]
     public AudioSource source;
 
+    [Header("BGM")]
+    public int intensityJumpWave;
+    public AudioSource regularBGM;
+    public AudioSource intenseBGM;
+
     public void Start()
     {
         currentWave = 0;
@@ -84,6 +89,13 @@ public class EnemyWaves : MonoBehaviour
                 healthGaugeFunctions.SetWavesUI(currentWave + 1);
                 healthGaugeFunctions.SetWaveText(currentWave + 1);
                 healthGaugeFunctions.NewWaveBulbs();
+
+                if (currentWave == intensityJumpWave)
+                {
+                    regularBGM.Stop();
+                    intenseBGM.Play();
+                }
+
                 return;
             }
 

@@ -175,8 +175,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8753002807390329953}
-  - component: {fileID: 501447615708033402}
   - component: {fileID: 2915036835199323677}
+  - component: {fileID: 8044134671104191513}
+  - component: {fileID: -2259608519704489529}
   m_Layer: 0
   m_Name: Minion
   m_TagString: PowerUp
@@ -201,8 +202,25 @@ Transform:
   - {fileID: 9185016158711770550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &501447615708033402
-BoxCollider2D:
+--- !u!114 &2915036835199323677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6556551496381902539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627b93b6acd835b44a9868b0d81a0d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupID: 7
+  lerpTime: 2
+  attactDistance: 3
+  attracted: 0
+  time: 0
+--- !u!58 &8044134671104191513
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -233,20 +251,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21133333}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.1877437}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &2915036835199323677
+  m_Radius: 0.3122563
+--- !u!114 &-2259608519704489529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,11 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6556551496381902539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627b93b6acd835b44a9868b0d81a0d9f, type: 3}
+  m_Script: {fileID: 11500000, guid: d1fcb5c25c4aff641b9c035703d151b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupID: 7
-  lerpTime: 2
-  attactDistance: 5
-  attracted: 0
-  time: 0
+  destroyTime: 10
