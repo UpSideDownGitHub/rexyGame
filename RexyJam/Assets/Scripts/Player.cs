@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float curHealth;
+    public GameObject deathObject;
 
     [Header("I Frames")]
     public bool iFrameActive;
@@ -83,6 +84,24 @@ public class Player : MonoBehaviour
     [Header("Thruster Effect")]
     public GameObject thrusterOn;
     public GameObject thrusterOff;
+
+    [Header("Sounds")]
+    public AudioSource source;
+    public float fireVolume;
+    public AudioClip fire;
+    public float powerupVoluem;
+    public AudioClip powerup;
+    public float implosionVolume;
+    public AudioClip implosion;
+    public float deathVolume;
+    public AudioClip death;
+    public float healthPickupVolume;
+    public AudioClip healthPickup;
+
+    [Header("Thruster")]
+    public AudioSource thruster;
+    public float thrusterOffVolume;
+    public AudioClip thrusterOffSound;
 
     // INPUT
     private float _lookVecRex;
@@ -145,6 +164,8 @@ public class Player : MonoBehaviour
         if (iFrameActive)
             return;
 
+        healthGaugeFunctions.Bobble();
+
         ResetMultiplier();
         curHealth = curHealth - damage <= 0 ? 0 : curHealth - damage;
         healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
@@ -156,7 +177,8 @@ public class Player : MonoBehaviour
         if (curHealth == 0)
         {
             PlayerPrefs.SetInt("Score", score);
-            SceneManager.LoadSceneAsync("EndScreen");
+            source.PlayOneShot(death, deathVolume);
+            deathObject.SetActive(true);
         }
     }
 
@@ -234,12 +256,19 @@ public class Player : MonoBehaviour
 
         if (_thrust)
         {
+            if (thrusterOff.activeInHierarchy)
+                thruster.Play();
             thrusterOn.SetActive(true);
             thrusterOff.SetActive(false);
             rb.AddForce(player.transform.up * thrustForce, ForceMode2D.Force);
         }
         else
         {
+            if (thrusterOn.activeInHierarchy)
+            {
+                thruster.Stop();
+                source.PlayOneShot(thrusterOffSound, thrusterOffVolume); 
+            }
             thrusterOn.SetActive(false);
             thrusterOff.SetActive(true);
         }
@@ -290,6 +319,8 @@ public class Player : MonoBehaviour
 
     public void SpawnBullet(Quaternion rot)
     {
+        source.PlayOneShot(fire, fireVolume);
+
         if (powerups[2].enabled) // Triple Shot
         {
             for (int i = -1; i < 2; i++)
@@ -331,12 +362,14 @@ public class Player : MonoBehaviour
     {
         if (powerupID == 0)
         {
+            source.PlayOneShot(healthPickup, healthPickupVolume);
             curHealth = curHealth + healthIncreaseAmount > maxHealth ? maxHealth : curHealth + healthIncreaseAmount;
             healthGaugeFunctions.CheckHealth(curHealth, maxHealth);
             return;
         }
         else if (powerupID == 1) // implosion
         {
+            source.PlayOneShot(implosion, implosionVolume);
             // spawn implosion effect
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             healthGaugeFunctions.bobbleHeadAnimator.SetTrigger("Shake");
@@ -351,6 +384,7 @@ public class Player : MonoBehaviour
         {
             minion.SetActive(true);
         }
+        source.PlayOneShot(powerup, powerupVoluem);
         healthGaugeFunctions.SetPowerUpUI(powerupID, true);
         powerups[powerupID].enabled = true;
         powerups[powerupID].timeToDisable = Time.time + powerups[powerupID].powerupLength;

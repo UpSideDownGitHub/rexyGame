@@ -36,6 +36,18 @@ public class HealthGaugeFunctions : MonoBehaviour
     public Animator monitorTextAnim;
     public TMP_Text multiplierBulbsText;
 
+    [Header("Wave UI")]
+    public GameObject nextWaveAnimObject;
+    public TMP_Text waveText;
+    public AudioSource source;
+
+    public void SetWaveText(int waveNumber)
+    {
+        nextWaveAnimObject.SetActive(true);
+        waveText.text = waveNumber.ToString();
+        source.Play();
+    }
+
     public void SetMultiplierUI(float multiplier)
     {
         multiplierBulbsText.text = "x " + multiplier.ToString("0.0");
@@ -99,9 +111,14 @@ public class HealthGaugeFunctions : MonoBehaviour
         waveSliderImage.fillAmount = fillAmount;
     }
 
-    public void CheckHealth(float currentHealth, float maxHealth)
+    public void Bobble()
     {
         bobbleHeadAnimator.SetTrigger("Shake");
+    }
+
+    public void CheckHealth(float currentHealth, float maxHealth)
+    {
+        
 
         string health = currentHealth.ToString();
         var healthList = health.ToCharArray();

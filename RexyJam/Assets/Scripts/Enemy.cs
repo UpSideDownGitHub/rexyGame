@@ -85,6 +85,9 @@ public class Enemy : MonoBehaviour
     public float distanceDecreaseAmount;
     private float _timeForNextDecrease;
 
+    [Header("Audio")]
+    public AudioSource shootSource;
+
     public void Awake()
     {
         if (type != EnemyType.BUG && type != EnemyType.KAMA && type != EnemyType.KAMA)
@@ -129,7 +132,7 @@ public class Enemy : MonoBehaviour
                 if (heavy)
                 {
                     if (Random.value < chanceToSpawnBomb)
-                        Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
+                        Instantiate(implision, transform.position, Quaternion.identity);
                     else if (Random.value < powerupDropChance)
                         Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
                 }
@@ -286,6 +289,7 @@ public class Enemy : MonoBehaviour
         laserSight.SetActive(true);
         yield return new WaitForSeconds(shootdelay);
         laserSight.SetActive(false);
+        shootSource.Play();
         var tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
         tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * fireForce);
         tempBullet.GetComponent<EnemyBullet>().damage = projectileDamage;

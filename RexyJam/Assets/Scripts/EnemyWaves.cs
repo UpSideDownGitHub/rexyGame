@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting.AssemblyQualifiedNameParser;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 using Random = UnityEngine.Random;
 
 
@@ -43,33 +44,22 @@ public class EnemyWaves : MonoBehaviour
     public float maxEnemySpawnRate;
     private float _timeOfNextEnemySpawn;
 
-
-    [Header("Wave Info")]
-    public TMP_Text waveNumber;
-    public bool showWaveNumber = true;
-    public float showWaveNumberTime;
-    private float _timeToHideWaveNumber;
-
     [Header("Wave UI")]
     public HealthGaugeFunctions healthGaugeFunctions;
+
+    [Header("Sounde")]
+    public AudioSource source;
 
     public void Start()
     {
         currentWave = 0;
         currentWaveInfo = 0;
-        waveNumber.text = "Wave 1";
         healthGaugeFunctions.SetWaveSliderIU(0);
         healthGaugeFunctions.SetWavesUI(currentWave + 1);
-        _timeToHideWaveNumber = Time.time + showWaveNumberTime;
     }
 
     public void Update()
     {
-        if (showWaveNumber && Time.time > _timeToHideWaveNumber)
-        {
-            showWaveNumber = false;
-            waveNumber.gameObject.SetActive(false);
-        }
         if (Time.time > _timeOfNextEnemySpawn)
         {
             _timeOfNextEnemySpawn = Time.time + Random.Range(minEnemySpawnRate, maxEnemySpawnRate);
@@ -92,11 +82,8 @@ public class EnemyWaves : MonoBehaviour
 
                 healthGaugeFunctions.SetWaveSliderIU(0);
                 healthGaugeFunctions.SetWavesUI(currentWave + 1);
-                waveNumber.text = "Wave " + (currentWave + 1);
+                healthGaugeFunctions.SetWaveText(currentWave + 1);
                 healthGaugeFunctions.NewWaveBulbs();
-                waveNumber.gameObject.SetActive(true);
-                showWaveNumber = true;
-                _timeToHideWaveNumber = Time.time + showWaveNumberTime;
                 return;
             }
 
@@ -138,6 +125,7 @@ public class EnemyWaves : MonoBehaviour
 
     public void EnemyDied()
     {
+        source.Play();
         enemyWaves[currentWaveInfo].currentEnemiesOnScreen--;
         enemyWaves[currentWaveInfo].currentEnemyKilledCount++;
         healthGaugeFunctions.SetWaveSliderIU((float)enemyWaves[currentWaveInfo].currentEnemyKilledCount / (float)enemyWaves[currentWaveInfo].totalEnemyCount);
