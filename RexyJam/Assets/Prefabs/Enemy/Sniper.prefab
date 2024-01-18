@@ -63,7 +63,6 @@ MonoBehaviour:
   died: 0
   pickups:
   - {fileID: 1102676376186072549, guid: 6be7070b3f97e834fbab153097fac54c, type: 3}
-  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
   - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
   - {fileID: 6556551496381902539, guid: c239b490c92b191468f5d4d78b0a6e9a, type: 3}
   - {fileID: 6556551496381902539, guid: 919a41e5f7cedff4abb8033a3744302f, type: 3}
@@ -88,6 +87,9 @@ MonoBehaviour:
   suicideDistance: 1.5
   laserSight: {fileID: 6483049236496980150}
   shootdelay: 1.33
+  implision: {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
+  heavy: 1
+  chanceToSpawnBomb: 0.1
   rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}

@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6744845069728553512}
@@ -114,7 +114,6 @@ MonoBehaviour:
   died: 0
   pickups:
   - {fileID: 1102676376186072549, guid: 6be7070b3f97e834fbab153097fac54c, type: 3}
-  - {fileID: 8394655730999137113, guid: ed65c002f32459c43a4a838fdcec3b05, type: 3}
   - {fileID: 6556551496381902539, guid: 84e0e1111e135f44fad4963ef7e5045a, type: 3}
   - {fileID: 6556551496381902539, guid: c239b490c92b191468f5d4d78b0a6e9a, type: 3}
   - {fileID: 6556551496381902539, guid: 919a41e5f7cedff4abb8033a3744302f, type: 3}
@@ -139,6 +138,9 @@ MonoBehaviour:
   suicideDistance: 0
   laserSight: {fileID: 0}
   shootdelay: 0
+  implision: {fileID: 0}
+  heavy: 0
+  chanceToSpawnBomb: 0
   rotationSpeed: 90
   lerpSpeed: 0
   offset: {x: 0, y: 0, z: 0}
@@ -289,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2812261902571278757, guid: dfd4b2e9cd160ba419edfa4dd4dcbf87, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2812261902571278757, guid: dfd4b2e9cd160ba419edfa4dd4dcbf87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -301,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2812261902571278757, guid: dfd4b2e9cd160ba419edfa4dd4dcbf87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2812261902571278757, guid: dfd4b2e9cd160ba419edfa4dd4dcbf87, type: 3}
       propertyPath: m_ConstrainProportionsScale

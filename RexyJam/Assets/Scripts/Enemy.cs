@@ -66,6 +66,13 @@ public class Enemy : MonoBehaviour
     public GameObject laserSight;
     public float shootdelay;
 
+    [Header("Implision Spawning")]
+    public GameObject implision;
+    public bool heavy;
+    [Range(0, 1)]
+    public float chanceToSpawnBomb;
+
+
 
     [Header("Kamakarzie")]
     public float rotationSpeed = 90f;
@@ -77,10 +84,6 @@ public class Enemy : MonoBehaviour
     public float distanceDecreaseTime;
     public float distanceDecreaseAmount;
     private float _timeForNextDecrease;
-    
-
-
-
 
     public void Awake()
     {
@@ -123,7 +126,14 @@ public class Enemy : MonoBehaviour
             if (damage != 9999)
             {
                 Instantiate(pickups[0], transform.position, Quaternion.identity);
-                if (Random.value < powerupDropChance)
+                if (heavy)
+                {
+                    if (Random.value < chanceToSpawnBomb)
+                        Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
+                    else if (Random.value < powerupDropChance)
+                        Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
+                }
+                else if (Random.value < powerupDropChance)
                     Instantiate(pickups[Random.Range(1, pickups.Length)], transform.position, Quaternion.identity);
             }
             Instantiate(explosionEffect, transform.position, Quaternion.identity);

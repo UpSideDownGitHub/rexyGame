@@ -108,8 +108,10 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         Physics2D.IgnoreLayerCollision(6, 7);
+        Physics2D.IgnoreLayerCollision(9, 7);
         Physics2D.IgnoreLayerCollision(6, 8);
         Physics2D.IgnoreLayerCollision(10, 10);
+        Physics2D.IgnoreLayerCollision(9, 9);
     }
 
     public void Start()
