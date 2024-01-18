@@ -9,6 +9,8 @@ public class ScrollScript : MonoBehaviour
 {
     public GameObject Cog;
 
+    public GameObject loadingScreen;
+
     [Header("Movement")]
     public float rotationSpeed;
 
@@ -50,6 +52,8 @@ public class ScrollScript : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
+            currentMin = (360f / 5f * i) - 360f / 10f;
+            currentMax = (360f / 5f * i) + 360f / 10f;
             if (Cog.transform.rotation.eulerAngles.z >= (360f / 5f * i) - 360f / 10f &&
                 Cog.transform.rotation.eulerAngles.z <= (360f / 5f * i) + 360f / 10f)
             {
@@ -58,6 +62,10 @@ public class ScrollScript : MonoBehaviour
                 ConfirmPressed(i);
                 break;
             }
+
+            if (currentMin == 252)
+                ConfirmPressed(0);
+
         }
     }
 
@@ -65,23 +73,28 @@ public class ScrollScript : MonoBehaviour
     {
         if (selected == 0) // play
         {
+            loadingScreen.SetActive(true);
             SceneManager.LoadSceneAsync("Main");
         }
-        else if (selected == 1) // settings
+        else if (selected == 1) // Credits
         {
-            print("Settings Pressed");
+            loadingScreen.SetActive(true);
+            SceneManager.LoadSceneAsync("Credits");
         }
         else if (selected == 2) // quit
         {
-            print("Quit Pressed");
+            loadingScreen.SetActive(true);
+            Application.Quit();
         }
         else if (selected == 3) // controls
         {
-            print("Controls Pressed");
+            loadingScreen.SetActive(true);
+            SceneManager.LoadSceneAsync("Controls");
         }
         else if (selected == 4) // leaderboard
         {
-            print("Leaderboard Pressed");
+            loadingScreen.SetActive(true);
+            SceneManager.LoadSceneAsync("Leaderboard");
         }
     }
 }
