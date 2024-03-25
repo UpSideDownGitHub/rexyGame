@@ -29,6 +29,11 @@ public class ScrollScript : MonoBehaviour
             SelectPressed();
     }
 
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
         if (_lookVecRex != 0)

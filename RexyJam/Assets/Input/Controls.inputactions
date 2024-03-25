@@ -158,6 +158,17 @@
                 },
                 {
                     "name": "",
+                    "id": "883c981e-5386-4664-befb-40519af1e9b2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "39783c7d-bf0a-4fc7-a4df-8fe7e66c8e89",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -191,6 +202,17 @@
                 },
                 {
                     "name": "",
+                    "id": "615d86a5-7a14-405e-bcf2-179e4c24c350",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9318f1d8-1419-4577-be7c-14f0c0ddc757",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -215,6 +237,17 @@
                     "name": "",
                     "id": "d678f6c2-accb-440f-baac-0c2fec3cfb90",
                     "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c71c8959-38da-4d68-aa68-35dd5b7cc74a",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -268,6 +301,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f4b82cf3-b58e-46c8-b2aa-89012ab45764",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2ed844fc-5da7-49e2-be85-30507389922b",
                     "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
@@ -309,6 +353,17 @@
                     "action": "Right Stick Controller",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1fa04861-d2fb-4be8-8f57-8fee9f41bcca",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

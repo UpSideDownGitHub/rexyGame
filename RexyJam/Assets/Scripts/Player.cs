@@ -131,6 +131,8 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 8);
         Physics2D.IgnoreLayerCollision(10, 10);
         Physics2D.IgnoreLayerCollision(9, 9);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Start()

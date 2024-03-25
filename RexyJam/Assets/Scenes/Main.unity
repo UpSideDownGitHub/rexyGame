@@ -4291,14 +4291,14 @@ MonoBehaviour:
   player: {fileID: 668140402}
   gun: {fileID: 983007757}
   firePoint: {fileID: 2085697978}
-  rotationSpeed: 1000
-  gunRotationSpeed: 1400
+  rotationSpeed: -25
+  gunRotationSpeed: -50
   thrustForce: 2500
   bullet: {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
   fireForce: 1000
   fireRate: 0.15
-  maxHealth: 500
-  curHealth: 500
+  maxHealth: 2
+  curHealth: 2
   deathObject: {fileID: 1632753510}
   iFrameActive: 0
   iFrameTime: 0
