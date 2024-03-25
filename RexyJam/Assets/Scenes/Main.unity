@@ -4424,8 +4424,8 @@ MonoBehaviour:
   player: {fileID: 668140402}
   gun: {fileID: 983007757}
   firePoint: {fileID: 2085697978}
-  rotationSpeed: -25
-  gunRotationSpeed: -50
+  rotationSpeed: -100
+  gunRotationSpeed: -100
   thrustForce: 2500
   bullet: {fileID: 617737425973227929, guid: 25cdecd0381fc504dbeb40f673fe6ca7, type: 3}
   fireForce: 1000
