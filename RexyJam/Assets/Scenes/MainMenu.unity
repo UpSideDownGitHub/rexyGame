@@ -8516,7 +8516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderboards
+  m_text: Comming Soon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2dddb8589f7617d42aefcec22b58afd8, type: 2}
   m_sharedMaterial: {fileID: -970884963724298081, guid: 2dddb8589f7617d42aefcec22b58afd8, type: 2}
@@ -11076,7 +11076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cog: {fileID: 1056434334}
   loadingScreen: {fileID: 1812007746921467136}
-  rotationSpeed: 3
+  rotationSpeed: 0.1
   zRotation: 0
   currentMin: 0
   currentMax: 0

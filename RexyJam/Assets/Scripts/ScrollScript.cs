@@ -98,8 +98,8 @@ public class ScrollScript : MonoBehaviour
         }
         else if (selected == 4) // leaderboard
         {
-            loadingScreen.SetActive(true);
-            SceneManager.LoadSceneAsync("Leaderboard");
+            //loadingScreen.SetActive(true);
+            //SceneManager.LoadSceneAsync("Leaderboard");
         }
     }
 }

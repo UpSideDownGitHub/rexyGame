@@ -18,6 +18,6 @@ public class EndManager : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadSceneAsync("EndScreen");
+        SceneManager.LoadSceneAsync("Credits");
     }
 }
