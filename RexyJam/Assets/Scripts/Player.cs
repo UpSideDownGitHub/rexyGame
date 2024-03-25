@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using TMPro;
 using UnityEngine;
@@ -111,6 +112,15 @@ public class Player : MonoBehaviour
     private bool _thrust;
     private bool _fire;
 
+
+    private bool _quit;
+    public float quitHoldTime;
+    private float _timeOfPress;
+    private float _timeOfQuit;
+
+    public GameObject quittingObject;
+    public Slider quitSlider;
+
     public void OnLeftStickRex(InputAction.CallbackContext ctx) => _lookVecRex = ctx.ReadValue<float>();
     public void OnLeftStickOther(InputAction.CallbackContext ctx) => _lookVecOther = ctx.ReadValue<float>();
     public void OnRightStickRex(InputAction.CallbackContext ctx) => _aimVecRex = ctx.ReadValue<float>();
@@ -122,6 +132,22 @@ public class Player : MonoBehaviour
             _fire = true;
         else if (ctx.action.WasReleasedThisFrame())
             _fire = false;
+    }
+
+    public void OnQuit(InputAction.CallbackContext ctx)
+    {
+        if (ctx.action.WasPressedThisFrame())
+        {
+            quittingObject.SetActive(true);
+            _quit = true;
+            _timeOfQuit = Time.time + quitHoldTime;
+            _timeOfPress = Time.time;
+        }
+        else if (ctx.action.WasReleasedThisFrame())
+        {
+            quittingObject.SetActive(false);
+            _quit = false;
+        }
     }
 
     public void Awake()
@@ -186,6 +212,19 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
+        // quitting logic
+        if (_quit)
+        {
+            // fill the slider over time
+            quitSlider.value = (Time.time - _timeOfPress) / (_timeOfQuit - _timeOfPress);
+
+            // if the final time is reached then quit the game
+            if (Time.time > _timeOfQuit)
+                SceneManager.LoadScene("MainMenu");
+        }
+
+
+
         // powerups
         _actualSuperFireRate = superFireRate;
         _actualFireRate = fireRate;

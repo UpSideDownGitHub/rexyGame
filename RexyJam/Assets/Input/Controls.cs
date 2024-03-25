@@ -98,6 +98,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""64d01f74-d05b-4018-8c63-5974c313fceb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -419,6 +428,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Select 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5fec8f7-c16c-4fae-b9e4-cfffb2a4b566"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""755ed824-589b-4c9b-a4ae-c1fada55901f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -435,6 +466,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
         m_Gameplay_Select2 = m_Gameplay.FindAction("Select 2", throwIfNotFound: true);
+        m_Gameplay_Quit = m_Gameplay.FindAction("Quit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -504,6 +536,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Select;
     private readonly InputAction m_Gameplay_Select2;
+    private readonly InputAction m_Gameplay_Quit;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -516,6 +549,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Select => m_Wrapper.m_Gameplay_Select;
         public InputAction @Select2 => m_Wrapper.m_Gameplay_Select2;
+        public InputAction @Quit => m_Wrapper.m_Gameplay_Quit;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -549,6 +583,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select2.started += instance.OnSelect2;
             @Select2.performed += instance.OnSelect2;
             @Select2.canceled += instance.OnSelect2;
+            @Quit.started += instance.OnQuit;
+            @Quit.performed += instance.OnQuit;
+            @Quit.canceled += instance.OnQuit;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -577,6 +614,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select2.started -= instance.OnSelect2;
             @Select2.performed -= instance.OnSelect2;
             @Select2.canceled -= instance.OnSelect2;
+            @Quit.started -= instance.OnQuit;
+            @Quit.performed -= instance.OnQuit;
+            @Quit.canceled -= instance.OnQuit;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -604,5 +644,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnSelect2(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
 }
